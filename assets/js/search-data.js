@@ -30,6 +30,20 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
+        },{id: "nav-talks",
+          title: "Talks",
+          description: "A selection of my research talks, conference presentations, and expository seminar talks.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/talks/";
+          },
+        },{id: "nav-notes",
+          title: "Notes",
+          description: "Mathematical notes from seminar talks and reading groups.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/notes/";
+          },
         },{id: "nav-repositories",
           title: "repositories",
           description: "Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.",
