@@ -1,38 +1,44 @@
-- title: General Information
-  type: info
-  contents:
-    - title: Full Name
-      value: David Aretz
-    - title: Languages
-      value: English, German
+# yaml-language-server: $schema=https://github.com/rendercv/rendercv/blob/main/schema.json?raw=true
+# RenderCV format (https://rendercv.com/) — used by the CV page and .github/workflows/render-cv.yml
+cv:
+  name: David Aretz
+  headline: PhD student in Mathematics
+  location: Bonn, Germany
+  email: aretz@mpim-bonn.mpg.de
+  website: https://davidaretz.github.io
 
-- title: Education
-  type: time_table
-  contents:
-    - title: PhD in Mathematics
-      institution: Max Planck Institute for Mathematics (MPIM), Bonn
-      year: 2023 - present
-      description: PhD student.
-    - title: MSc Mathematics
-      institution: University of Bonn
-      year: 2020 - 2023
-      description: Graduated 01/2023.
-    - title: BSc Mathematics
-      institution: University of Bonn
-      year: 2017 - 2020
-      description: Prize for best graduating student.
+  sections:
+    Education:
+      - institution: Max Planck Institute for Mathematics (MPIM), Bonn
+        area: Mathematics
+        degree: PhD
+        start_date: 2023-09
+        end_date: present
+        highlights:
+          - PhD student.
+      - institution: University of Bonn
+        area: Mathematics
+        degree: MSc
+        start_date: 2020-10
+        end_date: 2023-01
+        highlights:
+          - Graduated 01/2023.
+      - institution: University of Bonn
+        area: Mathematics
+        degree: BSc
+        start_date: 2017-10
+        end_date: 2020-01
+        highlights:
+          - Prize for best graduating student.
 
-- title: Experience
-  type: time_table
-  contents:
-    - title: Teaching Assistant / Tutor
-      institution: University of Bonn
-      year: Multiple
-      description: Tutored courses including Analysis I-III, Complex Analysis, Global Analysis, and Introduction to Manifolds.
+    Experience:
+      - company: University of Bonn
+        position: Teaching Assistant / Tutor
+        summary: Tutored courses including Analysis I-III, Complex Analysis, Global Analysis, and Introduction to Manifolds.
 
-- title: Other
-  type: time_table
-  contents:
-    - title: Paternity Leave
-      year: 06/2024 - 07/2024
-      description: On paternity leave.
+    Other:
+      - bullet: "**Paternity leave** (06/2024 - 07/2024): On paternity leave."
+
+    Languages:
+      - name: Languages
+        summary: English, German
