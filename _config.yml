@@ -52,6 +52,11 @@ search_enabled: true
 socials_in_search: true
 posts_in_search: false
 bib_search: false
+# Collection labels to omit from the site search modal (see _scripts/search.liquid.js)
+search_excluded_collections:
+  - news
+  - projects
+  - books
 
 # Dimensions
 max_width: 930px
