@@ -1,5 +1,5 @@
 ---
-applyTo: "_books/**/*.md,_news/**/*.md,_pages/**/*.md,_posts/**/*.md,_projects/**/*.md,_teachings/**/*.md"
+applyTo: "_books/**/*.md,_news/**/*.md,_pages/**/*.md,_posts/**/*.md,_projects/**/*.md"
 ---
 
 # Content Files (Markdown) Instructions
@@ -13,7 +13,6 @@ Content in al-folio is organized by type:
 - **\_pages/** – Static pages (about, CV, publications, projects, etc.)
 - **\_posts/** – Blog posts (format: `YYYY-MM-DD-title.md`)
 - **\_projects/** – Project showcase entries
-- **\_teachings/** – Course and teaching information
 
 ## Frontmatter Structure
 
@@ -77,16 +76,6 @@ title: Project Name
 description: Short description
 img: /assets/img/project-image.jpg
 importance: 1
----
-```
-
-### Teaching/Course Frontmatter (\_teachings/)
-
-```yaml
----
-layout: page
-title: Course Title
-description: Course description
 ---
 ```
 
@@ -250,7 +239,7 @@ def hello():
 ### Pages
 
 - Format: `descriptive-name.md`
-- Example: `about.md`, `teaching.md`, `cv.md`
+- Example: `about.md`, `cv.md`
 
 ## Markdown Linting & Formatting
 
