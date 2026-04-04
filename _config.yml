@@ -4,12 +4,12 @@
 
 title: blank # the website title (if blank, full name will be used instead)
 first_name: David
-middle_name:
+middle_name: 
 last_name: Aretz
 email: aretz(at)mpim-bonn.mpg.de
 description: PhD student at the Max Planck Institute for Mathematics in Bonn. # This shows up in search engines
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: pair-of-pants.svg # favicon; file in /assets/img/
+icon: pair-of-pants.svg # topological pair-of-pants cobordism; file in /assets/img/
 
 url: https://davidaretz.github.io # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog/. Leave blank for root
@@ -261,7 +261,7 @@ terser:
 
 jekyll-archives:
   posts:
-    enabled: [] # blog archives disabled while blog is hidden; restore [year, tags, categories] to re-enable
+    enabled: [year, tags, categories] # needed so /blog/tag/* and /blog/category/* exist (link checker + real URLs)
     permalinks:
       year: "/blog/:year/"
       tags: "/blog/:type/:name/"
