@@ -9,8 +9,8 @@ nav_order: 4
 
 I occasionally write up detailed notes for seminar talks and expository presentations.
 
-* **Differential forms on stacks and the de Rham theorem** (Jan 2025)  
+- **Differential forms on stacks and the de Rham theorem** (Jan 2025)  
   Notes prepared for the Group Seminar on higher structures.  
   [[Download PDF](/assets/pdf/de_Rham_Cohomology_Stacks.pdf)]
 
-*(More notes will be uploaded here in the future.)*
+_(More notes will be uploaded here in the future.)_
