@@ -12,33 +12,46 @@ cv:
       - institution: Max Planck Institute for Mathematics (MPIM), Bonn
         area: Mathematics
         degree: PhD
-        start_date: 2023-09
+        start_date: 2023-04
         end_date: present
         highlights:
-          - PhD student.
+          - PhD student with Christian Blohmann and Peter Teichner.
       - institution: University of Bonn
         area: Mathematics
         degree: MSc
         start_date: 2020-10
         end_date: 2023-01
         highlights:
-          - Graduated 01/2023.
+          - Master's thesis: Cohomological extension of groupoid convolution
+          - with distinction
       - institution: University of Bonn
         area: Mathematics
         degree: BSc
         start_date: 2017-10
-        end_date: 2020-01
+        end_date: 2020-08
         highlights:
+          - Bachelor's thesis: The noncommutative geometry of symplectic singularities
           - Prize for best graduating student.
 
     Experience:
       - company: University of Bonn
         position: Teaching Assistant / Tutor
-        summary: Tutored courses including Analysis I-III, Complex Analysis, Global Analysis, and Introduction to Manifolds.
-
+        start_date: 2018-09
+        end_date: 2023-03
+        highlights: 
+          - Preliminary Course
+          - Analysis I-III
+          - Complex Analysis
+          - Global Analysis
+          - Introduction to Manifolds
+          - Riemannian Geometry
+      - company: University of Bonn
+        position: Instructor, Teaching Assistant Training
+        summary: Instructor for a training day for teaching assistants.
+        date: Oct 2022, Oct 2024, Oct 2025
     Other:
       - bullet: "**Paternity leave** (06/2024 - 07/2024): On paternity leave."
 
     Languages:
       - name: Languages
-        summary: English, German
+        summary: English, German, Spanish, Latin, Arabic (beginner)
