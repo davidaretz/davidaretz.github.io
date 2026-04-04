@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# Render CV locally (same inputs as .github/workflows/render-cv.yml). Needs Python 3.12+.
+set -euo pipefail
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT"
+
+resolve_python() {
+  for cand in /opt/homebrew/bin/python3.12 /opt/homebrew/bin/python3.13 python3.12 python3.13; do
+    if command -v "$cand" &>/dev/null; then
+      if "$cand" -c 'import sys; sys.exit(0 if sys.version_info >= (3, 12) else 1)' 2>/dev/null; then
+        echo "$cand"
+        return 0
+      fi
+    fi
+  done
+  return 1
+}
+
+PY="$(resolve_python)" || {
+  echo "RenderCV needs Python 3.12+. Install e.g.: brew install python@3.12" >&2
+  exit 1
+}
+
+VENV="$ROOT/.venv-rendercv"
+if [[ ! -x "$VENV/bin/rendercv" ]]; then
+  "$PY" -m venv "$VENV"
+  "$VENV/bin/pip" install -q "rendercv[full]"
+fi
+
+cv_file=$(find _data -maxdepth 1 -type f \( -name "cv.yaml" -o -name "cv.yml" \) | head -1)
+if [[ -z "$cv_file" ]]; then
+  echo "No _data/cv.yml (or cv.yaml) found." >&2
+  exit 1
+fi
+settings=$(find assets/rendercv -maxdepth 1 -type f \( -name "settings.yaml" -o -name "settings.yml" \) | head -1)
+if [[ -z "$settings" ]]; then
+  echo "Missing assets/rendercv/settings.yaml" >&2
+  exit 1
+fi
+
+"$VENV/bin/rendercv" render "$cv_file" --settings "$settings"
+rm -f assets/rendercv/rendercv_output/*.typ
+echo "Done. PDF in assets/rendercv/rendercv_output/"

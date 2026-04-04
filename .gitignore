@@ -8,6 +8,7 @@ _site
 .sass-cache
 .tweet-cache
 .venv
+.venv-rendercv
 assets/libs/
 assets/rendercv/rendercv_output/*.typ
 Gemfile.lock
