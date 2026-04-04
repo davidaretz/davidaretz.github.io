@@ -45,9 +45,11 @@ jobs:
       - uses: actions/checkout@v6
 
       - name: Link Checker 🔗
-        uses: lycheeverse/lychee-action@v2.0.2
+        uses: lycheeverse/lychee-action@v2.6.0
         with:
           fail: true
+          # v2.0.2 shipped lychee 0.16.x, which lacks --root-dir; pin a current lychee release.
+          lycheeVersion: v0.23.0
           # --root-dir resolves leading-/ links in Markdown (e.g. /assets/pdf/…)
           # removed md files that include liquid tags
           args: --user-agent 'curl/7.54' --root-dir . --exclude-path README.md --exclude-path _pages/404.md --exclude-path _pages/blog.md --exclude-path _pages/about_einstein.md --exclude-path _posts/2018-12-22-distill.md --exclude-path _posts/2023-04-24-videos.md --exclude-path _books/the_godfather.md --exclude-path .github/instructions/bibtex-bibliography.instructions.md --exclude-path .github/instructions/yaml-configuration.instructions.md --exclude-path .github/instructions/markdown-content.instructions.md --exclude-path .github/instructions/liquid-templates.instructions.md --exclude-path AGENTS.md --exclude-path SEO.md --exclude-path '.venv/**' --exclude-path '.venv-rendercv/**' --exclude-path 'node_modules/**' --exclude-path '_site/**' --exclude-path 'lighthouse_results/**' --verbose --no-progress './**/*.md' './**/*.html'
