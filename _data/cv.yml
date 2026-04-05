@@ -22,7 +22,7 @@ cv:
         start_date: 2020-10
         end_date: 2023-01
         highlights:
-          - Master's thesis: Cohomological extension of groupoid convolution
+          - "Master's thesis: Cohomological extension of groupoid convolution"
           - with distinction
       - institution: University of Bonn
         area: Mathematics
@@ -30,7 +30,7 @@ cv:
         start_date: 2017-10
         end_date: 2020-08
         highlights:
-          - Bachelor's thesis: The noncommutative geometry of symplectic singularities
+          - "Bachelor's thesis: The noncommutative geometry of symplectic singularities"
           - Prize for best graduating student.
 
     Experience:
