@@ -2,6 +2,7 @@
 layout: about
 title: About
 permalink: /
+social: true # show icons from _data/socials.yml (jekyll-socials)
 profile:
   align: right
   image: Foto1.jpg
