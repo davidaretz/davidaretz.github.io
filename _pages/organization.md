@@ -18,5 +18,6 @@ nav_order: 5
 ### Conference & Retreat Organisation
 
 - **[BCGW PhD Retreat](https://people.mpim-bonn.mpg.de/miyamoto/bgw-retreat/2025)**
-  Organised the _Bonn-Cologne-Göttingen-Würzburg_ PhD retreat, Burbach, March 2025.
-- BGW PhD retreat, Bielefeld, October 2024
+  _Bonn-Cologne-Göttingen-Würzburg_ PhD retreat, Burbach, March 2025.
+- **[BGW PhD retreat](https://people.mpim-bonn.mpg.de/miyamoto/bgw-retreat/2024/)**
+_Bonn-Göttingen-Würzburg_ PhD retreat, Bielefeld, October 2024
