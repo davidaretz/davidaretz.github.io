@@ -30,12 +30,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/notes/";
           },
-        },{id: "nav-cv",
-          title: "CV",
-          description: "Here is a short CV.",
+        },{id: "nav-blog",
+          title: "Blog",
+          description: "Notes on research tools, AI, and mathematics.",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/cv/";
+            window.location.href = "/blog/";
           },
         },{id: "nav-organisation",
           title: "Organisation",
@@ -44,7 +44,25 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/organisation/";
           },
-        },{
+        },{id: "nav-cv",
+          title: "CV",
+          description: "Here is a short CV.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
+        },{id: "post-ai-assisted-research-in-mathematics",
+        
+          title: "AI-assisted research in mathematics",
+        
+        description: "How I use AI currently in my research.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/aimath/";
+          
+        },
+      },{
         id: 'social-cv',
         title: 'CV',
         section: 'Socials',
