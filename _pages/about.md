@@ -2,6 +2,7 @@
 layout: about
 title: About
 permalink: /
+description: PhD student at MPIM Bonn — higher differential geometry and functorial field theory.
 social: true # show icons from _data/socials.yml (jekyll-socials)
 profile:
   align: right
