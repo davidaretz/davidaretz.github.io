@@ -3,9 +3,8 @@ layout: default
 permalink: /blog/
 title: Blog
 description: Notes on research tools, AI, and mathematics.
-nav: true
+nav: false
 published: true
-nav_order: 5
 pagination:
   enabled: true
   collection: posts

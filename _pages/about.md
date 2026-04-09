@@ -15,3 +15,5 @@ My supervisors are [Christian Blohmann](https://people.mpim-bonn.mpg.de/blohmann
 My research interests are in higher differential geometry and functorial field theory.
 
 Check out the new [Quantum topology seminar](https://www.mpim-bonn.mpg.de/node/15202)!
+
+<p class="text-muted small mt-3 mb-0">Longer informal notes: <a href="{{ '/blog/' | relative_url }}">blog</a>.</p>
