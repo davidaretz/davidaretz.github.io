@@ -249,10 +249,16 @@ terser:
 # -----------------------------------------------------------------------------
 # Jekyll Archives
 # -----------------------------------------------------------------------------
+# Single-post mode: no /blog/ year or tag/category index pages. Re-enable when you
+# publish _pages/blog.md (published: true) and want archives:
+#   posts.enabled: [year, tags, categories]
+#   enable_post_archive_links: true
+
+enable_post_archive_links: false # year/tag/category links on post layout (see _layouts/post.liquid)
 
 jekyll-archives:
   posts:
-    enabled: [year, tags, categories] # needed so /blog/tag/* and /blog/category/* exist (link checker + real URLs)
+    enabled: []
     permalinks:
       year: "/blog/:year/"
       tags: "/blog/:type/:name/"
@@ -260,8 +266,8 @@ jekyll-archives:
   books:
     enabled: [year, tags, categories] # enables year, tag and category archives (remove if you need to disable one of them).
 
-display_tags: ["AI", "PhD"] # tag pills on the blog index (posts with these tags)
-display_categories: ["PhD"] # category pills on the blog index
+display_tags: [] # tag pills on blog index (only when blog page is published)
+display_categories: []
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar

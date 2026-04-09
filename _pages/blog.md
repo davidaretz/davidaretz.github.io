@@ -4,7 +4,7 @@ permalink: /blog/
 title: Blog
 description: Notes on research tools, AI, and mathematics.
 nav: false
-published: true
+published: false # set true when you want a full /blog/ listing again (see enable_post_archive_links in _config.yml)
 pagination:
   enabled: true
   collection: posts

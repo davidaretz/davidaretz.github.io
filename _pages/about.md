@@ -16,4 +16,4 @@ My research interests are in higher differential geometry and functorial field t
 
 Check out the new [Quantum topology seminar](https://www.mpim-bonn.mpg.de/node/15202)!
 
-<p class="text-muted small mt-3 mb-0">Longer informal notes: <a href="{{ '/blog/' | relative_url }}">blog</a>.</p>
+<p class="text-muted small mt-3 mb-0">Informal note: <a href="{% link _posts/2026-04-06-aimath.md %}">AI-assisted research in mathematics</a>.</p>
