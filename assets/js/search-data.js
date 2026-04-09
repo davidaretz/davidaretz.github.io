@@ -30,13 +30,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/notes/";
           },
-        },{id: "nav-blog",
-          title: "Blog",
-          description: "Notes on research tools, AI, and mathematics.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/blog/";
-          },
         },{id: "nav-organisation",
           title: "Organisation",
           description: "Seminars, retreats, and reading groups I have organised.",
