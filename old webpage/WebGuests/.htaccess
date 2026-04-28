@@ -1,0 +1,23 @@
+RewriteEngine On
+
+# Canonical redirects from the old MPIM guest site to GitHub Pages.
+# Covers both deployment styles:
+# 1) this folder served at domain root, e.g. /education/
+# 2) this folder served under /aretz/, e.g. /aretz/education/
+
+# CV
+RewriteRule ^(aretz/)?education/?$ https://davidaretz.github.io/cv/ [R=301,L]
+
+# Talks
+RewriteRule ^(aretz/)?talks/?$ https://davidaretz.github.io/talks/ [R=301,L]
+RewriteRule ^(aretz/)?talks/talks/?$ https://davidaretz.github.io/talks/ [R=301,L]
+
+# Home and common old endpoints
+RewriteRule ^(aretz/)?$ https://davidaretz.github.io/ [R=301,L]
+RewriteRule ^(aretz/)?index\.html$ https://davidaretz.github.io/ [R=301,L]
+RewriteRule ^(aretz/)?404\.html$ https://davidaretz.github.io/ [R=301,L]
+RewriteRule ^(aretz/)?feed\.xml$ https://davidaretz.github.io/feed.xml [R=301,L]
+RewriteRule ^(aretz/)?test\.html$ https://davidaretz.github.io/ [R=301,L]
+
+# Final fallback
+RewriteRule ^(aretz/)?(.*)$ https://davidaretz.github.io/$2 [R=301,L]
