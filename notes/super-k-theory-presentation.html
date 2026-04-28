@@ -21,24 +21,55 @@
         }
 
         /* Starry Background */
+        html, body {
+            height: 100%;
+            overflow: hidden; /* Prevent browser scrollbar competing with slide navigation */
+        }
+
         body {
             background-color: #000;
-            background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
-                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
-            background-size: 550px 550px, 350px 350px, 250px 250px;
-            background-position: 0 0, 40px 60px, 130px 270px;
+            position: relative;
+            background: #000;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background-image:
+                radial-gradient(2.8px 2.8px at 20px 30px, rgba(255,255,255,0.95), transparent 62%),
+                radial-gradient(1.5px 1.5px at 90px 120px, rgba(255,255,255,0.85), transparent 60%),
+                radial-gradient(1.8px 1.8px at 160px 70px, rgba(255,255,255,0.75), transparent 60%),
+                radial-gradient(1.2px 1.2px at 220px 180px, rgba(255,255,255,0.8), transparent 60%),
+                radial-gradient(2.4px 2.4px at 300px 40px, rgba(255,255,255,0.72), transparent 62%),
+                radial-gradient(1.4px 1.4px at 60px 210px, rgba(255,255,255,0.78), transparent 60%),
+                radial-gradient(1px 1px at 180px 260px, rgba(255,255,255,0.72), transparent 60%),
+                radial-gradient(2.6px 2.6px at 280px 250px, rgba(255,255,255,0.7), transparent 62%);
+            background-size: 320px 320px, 420px 420px, 520px 520px, 620px 620px, 760px 760px, 380px 380px, 540px 540px, 700px 700px;
+            animation: twinkle 9s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.7; }
+            100% { opacity: 1; }
         }
 
         /* Override Reveal text to be white */
         .reveal {
             color: white;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: transparent;
         }
         .reveal h1, .reveal h2, .reveal h3 {
             color: var(--sw-yellow);
             text-transform: none;
+        }
+
+        .reveal .slides section {
+            box-sizing: border-box;
+            padding: 0 1rem;
         }
 
         /* The Blue Intro Text */
@@ -56,27 +87,46 @@
         }
 
         /* 3D Title Scroll Container */
+        .intro-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            min-height: 100vh;
+            height: 100vh;
+            padding-top: 2vh;
+            padding-bottom: 2vh;
+        }
+
         .star-wars-container {
             display: flex;
+            align-items: center;
             justify-content: center;
-            height: 60vh;
-            perspective: 400px;
+            width: min(92vw, 1100px);
+            height: 100vh;
+            max-height: 100vh;
+            perspective: 520px;
             overflow: hidden;
-            margin-top: 50px;
+            position: relative;
+            margin: 0 auto;
+            -webkit-mask-image: linear-gradient(to top, transparent 0%, black 14%, black 88%, transparent 100%);
+            mask-image: linear-gradient(to top, transparent 0%, black 14%, black 88%, transparent 100%);
         }
 
         /* The Crawl Text */
         .crawl {
             color: var(--sw-yellow);
             font-family: 'Pathway Gothic One', sans-serif;
-            font-size: 300%;
+            width: min(95%, 1000px);
+            font-size: clamp(1.35rem, 2.6vw, 2.6rem);
             text-align: center;
-            letter-spacing: 6px;
-            line-height: 1.5;
+            letter-spacing: clamp(1px, 0.35vw, 5px);
+            line-height: 1.42;
             transform-origin: 50% 100%;
-            animation: crawl 20s linear forwards;
+            animation: crawl 30s linear forwards;
             opacity: 0;
-            animation-delay: 5s; /* Starts after intro text fades */
+            animation-delay: 6s; /* Starts after intro text fades */
         }
         
         .crawl h1 {
@@ -89,8 +139,8 @@
         }
 
         @keyframes crawl {
-            0% { opacity: 1; transform: rotateX(20deg) translateY(800px); }
-            100% { opacity: 1; transform: rotateX(25deg) translateY(-1500px); }
+            0% { opacity: 1; transform: rotateX(20deg) translateY(72vh); }
+            100% { opacity: 1; transform: rotateX(25deg) translateY(-230vh); }
         }
 
         /* Lightsaber Bullets */
@@ -120,11 +170,126 @@
         .hl-red { color: #d9534f; }
         .hl-purple { color: #9c27b0; }
         
-        .reveal .block {
-            border: 2px solid white;
+        .reveal .sw-box {
+            border: 2px solid rgba(255, 232, 31, 0.9);
             border-radius: 10px;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.08));
+            box-shadow: 0 0 0 1px rgba(255, 232, 31, 0.25), 0 0 18px rgba(255, 232, 31, 0.15);
+        }
+
+        .reveal .sw-box strong {
+            color: var(--sw-yellow);
+        }
+
+        .reveal .sw-box {
+            font-size: clamp(0.98em, 1.18vw, 1.12em);
+            line-height: 1.28;
+        }
+
+        .reveal .sw-box p {
+            margin: 0.38em 0;
+        }
+
+        .reveal .sw-box .MathJax_Display,
+        .reveal .sw-box mjx-container[display="true"] {
+            margin: 0.35em 0;
+            font-size: 1em;
+        }
+
+        .clifford-wrap {
+            margin-top: 0.9rem;
+        }
+
+        .clifford-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: clamp(0.54em, 1.12vw, 0.68em);
+            table-layout: auto;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .clifford-table th,
+        .clifford-table td {
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 0.35rem 0.5rem;
+            text-align: center;
+            white-space: normal;
+            word-break: keep-all;
+            overflow-wrap: anywhere;
+        }
+
+        .clifford-table thead th {
+            color: var(--sw-yellow);
+            font-weight: 700;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .clifford-table col.col-narrow { width: 8%; }
+        .clifford-table col.col-wide { width: 15%; }
+
+        .fundamental-facts {
+            margin-top: 0.7rem;
+            font-size: 1em;
+            text-align: left;
+        }
+
+        .picard-content {
+            font-size: clamp(0.62em, 1.3vw, 0.9em);
+            line-height: 1.2;
+        }
+
+        .picard-content p {
+            margin: 0.35em 0;
+        }
+
+        .graded-content {
+            font-size: clamp(0.64em, 1.2vw, 0.92em);
+            line-height: 1.22;
+        }
+
+        .graded-content p,
+        .graded-content ul {
+            margin: 0.35em 0;
+        }
+
+        .graded-content .connective-box {
+            font-size: 1.14em;
+            line-height: 1.3;
+            margin-top: 0.55rem;
+        }
+
+        .proof-content {
+            font-size: clamp(0.66em, 1.15vw, 0.9em);
+            line-height: 1.22;
+        }
+
+        .proof-steps {
+            margin-top: 0.5rem;
+            text-align: left;
+        }
+
+        .proof-steps p {
+            margin: 0.35em 0;
+        }
+
+        @media (max-width: 800px) {
+            .intro-text {
+                font-size: 1.15em;
+            }
+            .star-wars-container {
+                height: 100vh;
+                perspective: 420px;
+            }
+            .picard-content {
+                font-size: 0.62em;
+            }
+            .graded-content {
+                font-size: 0.62em;
+            }
+            .proof-content {
+                font-size: 0.64em;
+            }
         }
     </style>
 </head>
@@ -142,14 +307,13 @@
         \newcommand{\grotimes}{\hat{\otimes}}
         \newcommand{\fib}{\operatorname{fib}}
         \newcommand{\Mod}{\operatorname{Mod}}
-        \newcommand{\Sigma}{\Sigma}
         \)
     </div>
 
     <div class="reveal">
         <div class="slides">
 
-            <section data-transition="fade">
+            <section data-transition="fade" class="intro-slide">
                 <div class="intro-text">
                     A long time ago in an institute<br>far, far away....
                 </div>
@@ -159,23 +323,27 @@
                         <h1>SUPER<br>K-THEORY</h1>
                         <p>FOR SUPER ALGEBRAS</p>
                         <br><br>
-                        <p style="font-size: 0.6em; color: white;">
+                        <p style="font-size: 0.72em; color: white;">
                             DAVID ARETZ<br>
                             MPIM Bonn
                         </p>
                         <br>
-                        <p style="font-size: 0.5em;">EPISODE MMXXVI<br>MAY THE 4TH BE WITH YOU</p>
+                        <p style="font-size: 0.62em;">EPISODE MMXXVI<br>MAY THE 4TH BE WITH YOU</p>
                     </div>
                 </div>
             </section>
 
             <section>
                 <h2>Main Result</h2>
-                <div class="block">
+                <div class="block sw-box">
                     <p><strong>Theorem (A.-Stehouwer, in preparation)</strong></p>
-                    <p><span class="fragment highlight-current-blue hl-blue">Graded \( K \)-theory</span> defines a symmetric monoidal functor</p>
+                    <p><span class="fragment visible highlight-current-blue hl-blue" data-fragment-index="1">Graded \( K \)-theory</span> defines a symmetric monoidal functor</p>
                     <p>
-                        \[ K^{gr}: \class{fragment highlight-current-red}{\Pic(\sAlg_2)} \longrightarrow \class{fragment highlight-current-purple}{\Pic(KO)} \,, \]
+                        \( K^{gr}: \)
+                        <span class="fragment visible highlight-current-red hl-red" data-fragment-index="2">\( \Pic(\sAlg_2) \)</span>
+                        \( \longrightarrow \)
+                        <span class="hl-purple">\( \Pic(KO) \)</span>
+                        \( \,. \)
                     </p>
                     <p>which induces an isomorphism on \( \pi_0, \pi_1 \) and \( \pi_2 \), and \( \pi_i\Pic(\sAlg_2) \) vanishes for \( i > 2 \).</p>
                 </div>
@@ -196,40 +364,141 @@
             </section>
 
             <section>
+                <h2>Clifford Algebras</h2>
+                <div class="clifford-wrap">
+                    <table class="clifford-table">
+                        <colgroup>
+                            <col class="col-narrow">
+                            <col class="col-narrow">
+                            <col class="col-narrow">
+                            <col class="col-wide">
+                            <col class="col-wide">
+                            <col class="col-wide">
+                            <col class="col-wide">
+                            <col class="col-wide">
+                            <col class="col-wide">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>\( \Cl_0 \)</th>
+                                <th>\( \Cl_{-1} \)</th>
+                                <th>\( \Cl_{-2} \)</th>
+                                <th>\( \Cl_{-3} \)</th>
+                                <th>\( \Cl_{-4} \)</th>
+                                <th>\( \Cl_{-5} \)</th>
+                                <th>\( \Cl_{-6} \)</th>
+                                <th>\( \Cl_{-7} \)</th>
+                                <th>\( \Cl_{-8} \)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>\( \R \)</td>
+                                <td>\( \C \)</td>
+                                <td>\( \mathbb{H} \)</td>
+                                <td>\( \mathbb{H} \oplus \mathbb{H} \)</td>
+                                <td>\( M_2(\mathbb{H}) \)</td>
+                                <td>\( M_4(\C) \)</td>
+                                <td>\( M_8(\R) \)</td>
+                                <td>\( M_8(\R)^{\oplus 2} \)</td>
+                                <td>\( M_{16}(\R) \)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="block sw-box fundamental-facts fragment">
+                        <p><strong>Fundamental Facts</strong></p>
+                        <p>\( \Cl_{n+8}\simeq \Cl_n \), \( \Cl_{1,1}\simeq \R \), and these are Morita invertible: \( \Cl_n\grotimes \Cl_{-n}\simeq \R \).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
                 <h2>The Picard Groupoid: \( \Pic(\sAlg_2) \)</h2>
-                <p style="text-align: left;">
-                    \[ \pi_0 \Pic(\sAlg_2) = \{\Cl_0,\dots,\Cl_7\} \cong \Z/8 \]
-                    <span style="color: var(--sw-yellow);">(Super Brauer group)</span>
-                </p>
-                <p class="fragment" style="text-align: left;">
-                    \[ \pi_1 \Pic(\sAlg_2) = \{\R, \Pi \R \} \cong \Z/2 \]
-                </p>
-                <p class="fragment" style="text-align: left;">
-                    \[ \pi_2 \Pic(\sAlg_2) = \{\pm \operatorname{id} \} \cong \Z/2 \]
-                </p>
+                <div class="picard-content">
+                    <p style="text-align: left;">
+                        \[
+                        \pi_0 \Pic(\sAlg_2) = \{\text{Morita eq. classes of invertible super algebras}\}
+                        \]
+                        \[
+                        = \{\Cl_0,\dots,\Cl_7\} \cong \Z/8
+                        \]
+                        <span style="color: var(--sw-yellow);">(Super Brauer group)</span>
+                    </p>
+                    <p class="fragment" style="text-align: left;">
+                        \[
+                        \pi_1 \Pic(\sAlg_2) = \{\text{invertible } \R\text{-}\R\text{-super bimodules}\}
+                        \]
+                        \[
+                        = \{\R, \Pi \R \} \cong \Z/2
+                        \]
+                    </p>
+                    <p class="fragment" style="text-align: left;">
+                        \[
+                        \pi_2 \Pic(\sAlg_2) = \{\text{isometries of bimodules } \R \to \R\}
+                        \]
+                        \[
+                        = \{\pm \operatorname{id} \} \cong \Z/2
+                        \]
+                    </p>
+                </div>
             </section>
 
             <section>
                 <h2>Graded \( K \)-theory</h2>
-                <p>For an ungraded Banach algebra \( A \):</p>
-                \[ k_A = k(\Mod_A) = \text{group completion} \]
-                
-                <div class="fragment block">
-                    <p><strong>Definition: Connective graded \( K \)-theory</strong></p>
-                    \[ k^{gr}_A := \fib\left(k(\Mod^{graded}_A) \longrightarrow k(\Mod_{A}^{ungraded})\right) \]
+                <div class="graded-content">
+                    <p>For an ungraded Banach algebra \( A \):</p>
+                    \[
+                    k_A = k(\Mod_A)= \text{group completion of }(\Mod_A^{fgp,\cong},\oplus)
+                    \]
+                    <p>Example: \( ko = k_{\R} \), \( k_{C(X;\R)}\simeq ko(X) \).</p>
+                    
+                    <div class="fragment block sw-box connective-box">
+                        <p><strong>Definition: Connective graded \( K \)-theory</strong></p>
+                        <p>For a super Banach algebra \( A \), we define graded \( K \)-theory as the fiber:</p>
+                        \[
+                        k^{gr}_A := \fib\left(k(\Mod^{graded}_A) \longrightarrow k(\Mod_{A}^{ungraded})\right) \,.
+                        \]
+                    </div>
+                    
+                    <ul class="fragment">
+                        <li>Spectral refinement of Karoubi \( K \)-theory.</li>
+                        <li>Upgrades to a lax symmetric monoidal functor \( \sAlg_2 \to \mathrm{Sp} \).</li>
+                        <li>Extends topological \( K \)-theory.</li>
+                    </ul>
                 </div>
-                
-                <ul class="fragment">
-                    <li>Spectral refinement of Karoubi \( K \)-theory.</li>
-                    <li>Upgrades to lax symmetric monoidal functor.</li>
-                </ul>
+            </section>
+
+            <section>
+                <h2>Proof</h2>
+                <div class="proof-content">
+                    <div class="block sw-box">
+                        <p><strong>Theorem (A.-Stehouwer, in preparation)</strong></p>
+                        <p><span class="fragment visible highlight-current-blue hl-blue" data-fragment-index="1">Graded \( K \)-theory</span> defines a symmetric monoidal functor</p>
+                        <p>
+                            \( K^{gr}: \)
+                            <span class="fragment visible highlight-current-red hl-red" data-fragment-index="2">\( \Pic(\sAlg_2) \)</span>
+                            \( \longrightarrow \)
+                            <span class="hl-purple">\( \Pic(KO) \)</span>
+                            \( \,. \)
+                        </p>
+                        <p>which induces an isomorphism on \( \pi_0, \pi_1 \) and \( \pi_2 \), and \( \pi_i\Pic(\sAlg_2) \) vanishes for \( i > 2 \).</p>
+                    </div>
+
+                    <div class="proof-steps">
+                        <p><strong>Key Steps:</strong></p>
+                        <p class="fragment">(\( \pi_0=\Z/8 \)) \( K^{gr}_{\Cl_n}\simeq \Sigma^n KO \).</p>
+                        <p class="fragment">(\( \pi_1=\Z/2 \)) The operation \( V \mapsto V \grotimes \Pi \R \) corresponds to multiplication by \( -1 \in \pi_0 KO \).</p>
+                        <p class="fragment">(\( \pi_2=\Z/2 \)) The bimodule map \( -\operatorname{id}:\R \to \R \) corresponds to the Moebius bundle over \( S^1 \).</p>
+                    </div>
+                </div>
             </section>
 
             <section>
                 <h2>Episode VIII: The Outlook Continues...</h2>
                 <ul class="lightsaber-list">
                     <li class="fragment"><span style="color: var(--sw-yellow)">Direct link:</span> Rep theory \( \longleftrightarrow \) topological \( K \)-theory</li>
-                    <li class="fragment"><strong>\( \E_\infty \)-spin orientation \( M\Spin \to KO \)</strong></li>
+                    <li class="fragment"><strong>\( \mathbb{E}_\infty \)-\( \mathrm{Spin} \) orientation \( M\mathrm{Spin} \to KO \)</strong></li>
                     <li class="fragment"><strong>Twisted equivariant \( K \)-theory</strong></li>
                     <li class="fragment"><strong>\( K \)-homology</strong> <em>(The Dark Side of the pairing)</em></li>
                     <li class="fragment"><strong>\( KK \)-theory(?)</strong> <em>(A New Hope)</em></li>
@@ -238,7 +507,7 @@
 
             <section>
                 <h1 style="color: var(--sw-yellow); font-family: 'Poller One', cursive; text-transform: uppercase;">Thank You!</h1>
-                <h3>May the Force be with your K-Theory.</h3>
+                <h3>May the Fourth be with you.</h3>
             </section>
 
         </div>
