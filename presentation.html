@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super K-Theory for Super Algebras</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&family=Poller+One&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           STAR WARS THEME CSS
+           ========================================== */
+        :root {
+            --sw-yellow: #ffe81f;
+            --jedi-blue: #2e67f8;
+        }
+
+        /* Starry Background */
+        body {
+            background-color: #000;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+        }
+
+        /* Override Reveal text to be white */
+        .reveal {
+            color: white;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        .reveal h1, .reveal h2, .reveal h3 {
+            color: var(--sw-yellow);
+            text-transform: none;
+        }
+
+        /* The Blue Intro Text */
+        .intro-text {
+            color: #4ee;
+            font-size: 1.5em;
+            opacity: 0;
+            animation: intro 6s ease-out forwards;
+        }
+        @keyframes intro {
+            0% { opacity: 0; }
+            20% { opacity: 1; }
+            80% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        /* 3D Title Scroll Container */
+        .star-wars-container {
+            display: flex;
+            justify-content: center;
+            height: 60vh;
+            perspective: 400px;
+            overflow: hidden;
+            margin-top: 50px;
+        }
+
+        /* The Crawl Text */
+        .crawl {
+            color: var(--sw-yellow);
+            font-family: 'Pathway Gothic One', sans-serif;
+            font-size: 300%;
+            text-align: center;
+            letter-spacing: 6px;
+            line-height: 1.5;
+            transform-origin: 50% 100%;
+            animation: crawl 20s linear forwards;
+            opacity: 0;
+            animation-delay: 5s; /* Starts after intro text fades */
+        }
+        
+        .crawl h1 {
+            font-family: 'Poller One', cursive; /* Authentic blocky SW Logo font */
+            font-size: 2.5em;
+            margin-bottom: 0px;
+            line-height: 1.2;
+            -webkit-text-stroke: 2px var(--sw-yellow);
+            color: black; /* Hollow letters like the movie */
+        }
+
+        @keyframes crawl {
+            0% { opacity: 1; transform: rotateX(20deg) translateY(800px); }
+            100% { opacity: 1; transform: rotateX(25deg) translateY(-1500px); }
+        }
+
+        /* Lightsaber Bullets */
+        ul.lightsaber-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        ul.lightsaber-list li {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 20px;
+        }
+        ul.lightsaber-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 40px;
+            height: 6px;
+            background: linear-gradient(to right, #ccc 20%, white 20%, white 100%);
+            border-radius: 3px;
+            box-shadow: 10px 0 10px var(--jedi-blue), 10px 0 5px var(--jedi-blue);
+        }
+
+        /* Highlight classes for theorem */
+        .hl-blue { color: #5bc0de; }
+        .hl-red { color: #d9534f; }
+        .hl-purple { color: #9c27b0; }
+        
+        .reveal .block {
+            border: 2px solid white;
+            border-radius: 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div style="display:none">
+        \(
+        \newcommand{\sAlg}{\mathsf{sAlg}}
+        \newcommand{\sVect}{\mathsf{sVect}}
+        \newcommand{\Pic}{\operatorname{Pic}}
+        \newcommand{\Cl}{\operatorname{Cl}}
+        \newcommand{\R}{\mathbb{R}}
+        \newcommand{\C}{\mathbb{C}}
+        \newcommand{\Z}{\mathbb{Z}}
+        \newcommand{\grotimes}{\hat{\otimes}}
+        \newcommand{\fib}{\operatorname{fib}}
+        \newcommand{\Mod}{\operatorname{Mod}}
+        \newcommand{\Sigma}{\Sigma}
+        \)
+    </div>
+
+    <div class="reveal">
+        <div class="slides">
+
+            <section data-transition="fade">
+                <div class="intro-text">
+                    A long time ago in an institute<br>far, far away....
+                </div>
+                
+                <div class="star-wars-container">
+                    <div class="crawl">
+                        <h1>SUPER<br>K-THEORY</h1>
+                        <p>FOR SUPER ALGEBRAS</p>
+                        <br><br>
+                        <p style="font-size: 0.6em; color: white;">
+                            DAVID ARETZ<br>
+                            MPIM Bonn
+                        </p>
+                        <br>
+                        <p style="font-size: 0.5em;">EPISODE MMXXVI<br>MAY THE 4TH BE WITH YOU</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Main Result</h2>
+                <div class="block">
+                    <p><strong>Theorem (A.-Stehouwer, in preparation)</strong></p>
+                    <p><span class="fragment highlight-current-blue hl-blue">Graded \( K \)-theory</span> defines a symmetric monoidal functor</p>
+                    <p>
+                        \[ K^{gr}: \class{fragment highlight-current-red}{\Pic(\sAlg_2)} \longrightarrow \class{fragment highlight-current-purple}{\Pic(KO)} \,, \]
+                    </p>
+                    <p>which induces an isomorphism on \( \pi_0, \pi_1 \) and \( \pi_2 \), and \( \pi_i\Pic(\sAlg_2) \) vanishes for \( i > 2 \).</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Super (Easy) Algebras</h2>
+                <ul>
+                    <li class="fragment"><strong>Super Vector Spaces:</strong> \( (\sVect,\grotimes) \) where \( V=V_0\oplus V_1 \).</li>
+                    <li class="fragment"><strong>Koszul Braiding:</strong>
+                        \[ v \otimes w \longmapsto (-1)^{|v||w|} w \otimes v \]
+                    </li>
+                    <li class="fragment"><strong>Super Algebras:</strong> \( (\sAlg_2,\grotimes) \) -- symmetric monoidal 2-category.</li>
+                    <li class="fragment"><strong>Clifford Algebras \( \Cl_{p,q} \):</strong>
+                        \[ \Cl_{p,q} \grotimes \Cl_{p',q'} \cong \Cl_{p+p',q+q'} \,. \]
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>The Picard Groupoid: \( \Pic(\sAlg_2) \)</h2>
+                <p style="text-align: left;">
+                    \[ \pi_0 \Pic(\sAlg_2) = \{\Cl_0,\dots,\Cl_7\} \cong \Z/8 \]
+                    <span style="color: var(--sw-yellow);">(Super Brauer group)</span>
+                </p>
+                <p class="fragment" style="text-align: left;">
+                    \[ \pi_1 \Pic(\sAlg_2) = \{\R, \Pi \R \} \cong \Z/2 \]
+                </p>
+                <p class="fragment" style="text-align: left;">
+                    \[ \pi_2 \Pic(\sAlg_2) = \{\pm \operatorname{id} \} \cong \Z/2 \]
+                </p>
+            </section>
+
+            <section>
+                <h2>Graded \( K \)-theory</h2>
+                <p>For an ungraded Banach algebra \( A \):</p>
+                \[ k_A = k(\Mod_A) = \text{group completion} \]
+                
+                <div class="fragment block">
+                    <p><strong>Definition: Connective graded \( K \)-theory</strong></p>
+                    \[ k^{gr}_A := \fib\left(k(\Mod^{graded}_A) \longrightarrow k(\Mod_{A}^{ungraded})\right) \]
+                </div>
+                
+                <ul class="fragment">
+                    <li>Spectral refinement of Karoubi \( K \)-theory.</li>
+                    <li>Upgrades to lax symmetric monoidal functor.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Episode VIII: The Outlook Continues...</h2>
+                <ul class="lightsaber-list">
+                    <li class="fragment"><span style="color: var(--sw-yellow)">Direct link:</span> Rep theory \( \longleftrightarrow \) topological \( K \)-theory</li>
+                    <li class="fragment"><strong>\( \E_\infty \)-spin orientation \( M\Spin \to KO \)</strong></li>
+                    <li class="fragment"><strong>Twisted equivariant \( K \)-theory</strong></li>
+                    <li class="fragment"><strong>\( K \)-homology</strong> <em>(The Dark Side of the pairing)</em></li>
+                    <li class="fragment"><strong>\( KK \)-theory(?)</strong> <em>(A New Hope)</em></li>
+                </ul>
+            </section>
+
+            <section>
+                <h1 style="color: var(--sw-yellow); font-family: 'Poller One', cursive; text-transform: uppercase;">Thank You!</h1>
+                <h3>May the Force be with your K-Theory.</h3>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/math/math.js"></script>
+    
+    <script>
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+            transition: 'slide',
+            plugins: [ RevealMath.MathJax3 ]
+        });
+    </script>
+</body>
+</html>
