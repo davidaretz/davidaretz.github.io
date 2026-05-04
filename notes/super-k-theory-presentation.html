@@ -370,7 +370,7 @@
                         <li class="fragment"><strong>Koszul Braiding:</strong>
                             \[ v \otimes w \longmapsto (-1)^{|v||w|} w \otimes v \]
                         </li>
-                        <li class="fragment"><strong>Super Algebras:</strong> \( (\sAlg_2,\grotimes) \) — symmetric monoidal 2-category; 1-morphisms are super bimodules — <em>super Morita equivalence.</em></li>
+                        <li class="fragment"><strong>Super Algebras:</strong> \( (\sAlg_2,\grotimes) \) — symmetric monoidal 2-category; 1-morphisms are super bimodules \( {}_A M_B \) — <em>super Morita equivalence.</em></li>
                         <li class="fragment"><strong>Clifford Algebras \( \Cl_{p,q} \):</strong> odd generators \( e_1,\dots,e_p,f_1,\dots,f_q \) with \( e_i^2=+1 \), \( f_j^2=-1 \), pairwise anticommute.
                             \[ \Cl_{p,q} \grotimes \Cl_{p',q'} \cong \Cl_{p+p',q+q'} \,. \]
                         </li>
@@ -454,6 +454,42 @@
                         \]
                         \[
                         = \{\pm \operatorname{id} \} \cong \Z/2
+                        \]
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Topological \( K \)-theory</h2>
+                <div class="picard-content">
+                    <ul style="text-align: left; margin-bottom: 0.75em;">
+                        <li><strong>\( KO \)-Theory:</strong> A multiplicative generalized cohomology theory formed by the group completion of vector bundles.</li>
+                        <li><strong>Bott Periodicity:</strong> \( KO^{n+8}(X) \cong KO^n(X) \).</li>
+                        <li>\( KO \) is a commutative ring spectrum, making \( (\Mod(KO), \otimes_{KO}) \) symmetric monoidal.</li>
+                    </ul>
+                    <div class="fragment" style="text-align: left;">
+                        <p style="margin-top: 0.5em;"><strong>The Picard group \( \Pic(KO) \):</strong></p>
+                        \[
+                        \pi_0 \Pic(KO) = \{\otimes_{KO}\text{-invertible } KO\text{-modules}\}
+                        \]
+                        \[
+                        = \{KO, \dots, \Sigma^7 KO\} \cong \Z/8
+                        \]
+                    </div>
+                    <p class="fragment" style="text-align: left;">
+                        \[
+                        \pi_1 \Pic(KO) = \{\text{invertible elements in } \pi_0 KO\}
+                        \]
+                        \[
+                        = \{\R, -\R\} \cong \Z/2
+                        \]
+                    </p>
+                    <p class="fragment" style="text-align: left;">
+                        \[
+                        \pi_2 \Pic(KO) \cong \Z/2
+                        \]
+                        \[
+                        \pi_i \Pic(KO) \cong \pi_{i-1} KO
                         \]
                     </p>
                 </div>
