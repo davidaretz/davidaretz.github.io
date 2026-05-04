@@ -9,7 +9,8 @@ nav_order: 3
 
 ### Research Talks & Conference Presentations
 
-- **05/2026** - _K-theory for Super Algebras_ Higher Differential Geometry, Greifswald
+- **05/2026** - _K-theory for Super Algebras_
+  Higher Differential Geometry, Greifswald. [[HTML slides](/notes/super-k-theory-presentation.html)]
 - **10/2025** - _Functoriality of Lie groupoid convolution algebras_
   [Higher Differential Geometry Seminar](https://www.mpim-bonn.mpg.de/node/3946), MPIM Bonn
 - **07/2025** - _Functoriality of Lie groupoid convolution algebras_
