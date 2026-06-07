@@ -13,4 +13,6 @@ I occasionally write up detailed notes for seminar talks and expository presenta
   Notes prepared for the Group Seminar on higher structures.  
   [[Download PDF](/assets/pdf/de_Rham_Cohomology_Stacks.pdf)]
 
-_(More notes will be uploaded here in the future.)_
+- **Kan extension and Coends**  
+  I could not find a reference that contains the exact formula.  
+  [[Download PDF](/assets/pdf/Kan_extension_and_Coends.pdf)]
