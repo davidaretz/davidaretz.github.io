@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-04-13'
+  last_updated: '2026-06-17'
 papers:
   4SGXYD0AAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -9,6 +9,10 @@ papers:
     citations: 1
     title: Cohomological Extension of Groupoid Convolution
     year: '2023'
+  4SGXYD0AAAAJ:UeHWp8X0CEIC:
+    citations: 0
+    title: Clifford algebras, spin structures and twisted K-theory
+    year: Unknown Year
   4SGXYD0AAAAJ:d1gkVwhDpl0C:
     citations: 1
     title: Functoriality of bornological groupoid convolution
