@@ -16,3 +16,6 @@ I occasionally write up detailed notes for seminar talks and expository presenta
 - **Kan extension and Coends**  
   I could not find a reference that contains the exact formula.  
   [[Download PDF](/assets/pdf/Kan_extension_and_Coends.pdf)]
+
+- **Morse functions and h-principles**  
+  [[Download PDF](/assets/pdf/Morse_functions_h_principles.pdf)]
