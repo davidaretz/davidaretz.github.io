@@ -1,0 +1,991 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The higher algebra of the spin orientation</title>
+    <style>
+      :root {
+        --ground: #f3eff5;
+        --card: #fdfcfe;
+        --ink: #2a2430;
+        --muted: #7b7284;
+        --line: #e3dce9;
+        --block: #f0eaf5;
+        --block-strong: #e5dbed;
+        --bar: #582a72;
+        --bar-text: #ffffff;
+        --accent: #582a72;
+        --red: #c23227;
+        --dg: #40374a;
+        --logo: #5b4c9e;
+        --sans: "Fira Sans", "Segoe UI", "Helvetica Neue", Arial, system-ui, sans-serif;
+        --math: "STIX Two Text", "STIX Two Math", Georgia, "Times New Roman", serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --ground: #171219;
+          --card: #211a28;
+          --ink: #ece6f1;
+          --muted: #9c92a8;
+          --line: #372e41;
+          --block: #2c2437;
+          --block-strong: #382e45;
+          --bar: #46225c;
+          --bar-text: #f4edf9;
+          --accent: #c9a0e8;
+          --red: #e56a5e;
+          --dg: #c9c0d4;
+          --logo: #8f7fd4;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        background: var(--ground);
+        font-size: calc(min(1500px, 96vw, 141dvh) / 38.4);
+      }
+      body {
+        margin: 0;
+        font-family: var(--sans);
+        color: var(--ink);
+        font-size: 1rem;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .stage {
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 16px 12px 56px;
+        cursor: default;
+      }
+
+      .slide {
+        display: none;
+        width: min(1500px, 96vw, 141dvh);
+        aspect-ratio: 16 / 10;
+        overflow: auto;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        box-shadow:
+          0 1px 2px rgba(42, 21, 58, 0.06),
+          0 14px 40px rgba(42, 21, 58, 0.1);
+        position: relative;
+        flex-direction: column;
+      }
+      .slide.current {
+        display: flex;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .slide.current {
+          animation: slidein 0.38s ease;
+        }
+        @keyframes slidein {
+          from {
+            opacity: 0;
+            transform: translateX(18px);
+          }
+          to {
+            opacity: 1;
+            transform: none;
+          }
+        }
+      }
+
+      /* ------- fragments (beamer \onslide: space stays reserved) ------- */
+      .frag {
+        visibility: hidden;
+        opacity: 0;
+      }
+      .frag.on {
+        visibility: visible;
+        opacity: 1;
+      }
+      @media (prefers-reduced-motion: no-preference) {
+        .frag {
+          transition: opacity 0.4s ease;
+        }
+      }
+      /* beamer \alt: the two variants share one grid cell */
+      .altwrap {
+        display: grid;
+      }
+      .altwrap > * {
+        grid-area: 1 / 1;
+      }
+
+      /* ------- frame title ------- */
+      .frametitle {
+        position: relative;
+        flex: none;
+        background: var(--bar);
+        color: var(--bar-text);
+        font-weight: 600;
+        font-size: 1.4rem;
+        letter-spacing: 0.012em;
+        padding: 0.72rem 1.5rem 0.62rem;
+      }
+      .frametitle::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2.5px;
+        width: var(--p, 0%);
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .body {
+        flex: 1;
+        padding: 1.5rem 1.9rem 0.8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .frnum {
+        flex: none;
+        text-align: right;
+        color: var(--muted);
+        font-size: 0.86rem;
+        padding: 0 1.1rem 0.65rem;
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ------- blocks ------- */
+      .block {
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .block-title {
+        background: var(--block-strong);
+        font-weight: 600;
+        padding: 8px 16px 7px;
+        font-size: 1.05em;
+      }
+      .block-title.alert {
+        color: var(--accent);
+      }
+      .block-body {
+        background: var(--block);
+        padding: 12px 16px 14px;
+      }
+      .thmrow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        background: var(--block);
+      }
+      .thmlabel {
+        flex: none;
+        display: grid;
+        place-items: center;
+        padding: 14px 20px;
+        background: var(--block-strong);
+        font-weight: 600;
+        font-size: 1.05em;
+      }
+      .thmbody {
+        flex: 1;
+        min-width: 0;
+        padding: 8px 14px;
+      }
+
+      /* ------- math ------- */
+      .m {
+        font-family: var(--math);
+        font-size: 1.09em;
+      }
+      .m i,
+      .eq i {
+        font-style: italic;
+        letter-spacing: 0.01em;
+      }
+      .m .op,
+      .eq .op {
+        font-style: normal;
+      }
+      .m sup,
+      .m sub,
+      .eq sup,
+      .eq sub {
+        font-size: 0.7em;
+        line-height: 0;
+      }
+      .m sub,
+      .eq sub {
+        vertical-align: -0.28em;
+      }
+      .m sup,
+      .eq sup {
+        vertical-align: 0.5em;
+      }
+      .eq {
+        text-align: center;
+        font-family: var(--math);
+        font-size: 1.22em;
+        margin: 6px 0 2px;
+      }
+      .accent {
+        color: var(--accent);
+        font-weight: 600;
+      }
+      em {
+        font-style: italic;
+      }
+
+      /* ------- lists ------- */
+      ul.items {
+        margin: 0;
+        padding-left: 1.35em;
+        list-style: none;
+        display: grid;
+        gap: 7px;
+      }
+      ul.items li {
+        position: relative;
+      }
+      ul.items li::before {
+        content: "";
+        position: absolute;
+        left: -1.15em;
+        top: 0.48em;
+        border-style: solid;
+        border-width: 4.5px 0 4.5px 7px;
+        border-color: transparent transparent transparent var(--accent);
+      }
+
+      /* ------- diagrams ------- */
+      .diagram {
+        overflow-x: auto;
+        display: flex;
+        justify-content: center;
+        padding: 2px 0;
+      }
+      .diagram svg {
+        max-width: 100%;
+        height: auto;
+        width: var(--w, 21.6rem);
+      }
+      .diagram text {
+        fill: var(--ink);
+        font-family: var(--math);
+        font-size: 24px;
+      }
+      .diagram text .it {
+        font-style: italic;
+      }
+      .diagram text.lab {
+        font-size: 18px;
+        fill: var(--dg);
+      }
+      .diagram text.lab-red {
+        font-size: 18px;
+        fill: var(--red);
+        font-style: italic;
+      }
+      .diagram .edge {
+        stroke: var(--dg);
+        stroke-width: 1.3;
+        fill: none;
+      }
+      .diagram .edge.dotted {
+        stroke-dasharray: 2 4.5;
+        stroke-linecap: round;
+      }
+      .diagram .edge.red {
+        stroke: var(--red);
+      }
+      .diagram .ah {
+        fill: var(--dg);
+      }
+      .diagram .ah-red {
+        fill: var(--red);
+      }
+
+      /* ------- title card ------- */
+      .titlecard .tbody {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2.2rem 2.6rem;
+        position: relative;
+      }
+      .titlecard h1 {
+        margin: 0 0 20px;
+        font-size: clamp(1.8rem, 4.1vw, 2.8rem);
+        line-height: 1.18;
+        font-weight: 700;
+        letter-spacing: -0.008em;
+        text-wrap: balance;
+        max-width: 22ch;
+      }
+      .titlerule {
+        height: 2px;
+        width: min(430px, 78%);
+        background: var(--accent);
+        border: 0;
+        margin: 0 0 30px;
+      }
+      .titlecard .author {
+        font-size: 1.15rem;
+        margin: 0 0 14px;
+      }
+      .titlecard .date {
+        margin: 0;
+      }
+      .titlecard .venue {
+        margin: 2px 0 16px;
+        color: var(--muted);
+      }
+      .titlecard .inst {
+        margin: 0;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .hint {
+        margin: 26px 0 0;
+        font-size: 0.86rem;
+        color: var(--muted);
+      }
+      .hint kbd {
+        font-family: inherit;
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        padding: 1px 6px;
+        font-size: 0.9em;
+      }
+
+      /* ghosted Whitehead tower behind the title */
+      .ghost {
+        position: absolute;
+        right: 1.4rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: min(17.2rem, 46%);
+        opacity: 0.16;
+        pointer-events: none;
+      }
+      .ghost text {
+        fill: var(--ink);
+        font-family: var(--math);
+        font-size: 24px;
+      }
+      .ghost text .it {
+        font-style: italic;
+      }
+      .ghost text.lab {
+        font-size: 18px;
+      }
+      .ghost .edge {
+        stroke: var(--ink);
+        stroke-width: 1.3;
+        fill: none;
+      }
+      .ghost .edge.dotted {
+        stroke-dasharray: 2 4.5;
+        stroke-linecap: round;
+      }
+      .ghost .ah {
+        fill: var(--ink);
+      }
+      @media screen and (max-width: 760px) {
+        .ghost {
+          display: none;
+        }
+      }
+
+      .ico {
+        position: absolute;
+        right: 1.1rem;
+        bottom: 1rem;
+        width: 2.56rem;
+        height: auto;
+      }
+      .ico .front {
+        stroke: var(--logo);
+        fill: none;
+        stroke-width: 1.2;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+      }
+      .ico .back {
+        stroke: var(--logo);
+        fill: none;
+        stroke-width: 1;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+        opacity: 0.35;
+      }
+
+      /* ------- standout ------- */
+      .standout {
+        background: var(--bar);
+        border-color: var(--bar);
+      }
+      .standout .sbody {
+        flex: 1;
+        display: grid;
+        place-items: center;
+        position: relative;
+        color: var(--bar-text);
+      }
+      .standout p {
+        margin: 0;
+        font-size: 2.4rem;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+      .standout .ico .front {
+        stroke: rgba(255, 255, 255, 0.75);
+      }
+      .standout .ico .back {
+        stroke: rgba(255, 255, 255, 0.75);
+        opacity: 0.3;
+      }
+
+      /* ------- controls ------- */
+      .controls {
+        position: fixed;
+        right: 18px;
+        bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-variant-numeric: tabular-nums;
+        color: var(--muted);
+        font-size: 0.85rem;
+        user-select: none;
+      }
+      .controls button {
+        font: inherit;
+        color: var(--ink);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        width: 34px;
+        height: 30px;
+        cursor: pointer;
+        line-height: 1;
+      }
+      .controls button:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+
+      /* ------- print / PDF export: one page per slide, handout mode ------- */
+      @page {
+        size: 320mm 200mm;
+        margin: 0;
+      }
+      @media print {
+        html {
+          font-size: calc(320mm / 38.4);
+        }
+        .stage {
+          display: block;
+          padding: 0;
+          min-height: 0;
+        }
+        .slide {
+          display: flex !important;
+          width: 320mm;
+          height: 200mm;
+          aspect-ratio: auto;
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+          overflow: hidden;
+          break-after: page;
+        }
+        .slide:last-child {
+          break-after: auto;
+        }
+        .slide.current {
+          animation: none;
+        }
+        .frag {
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+        .frag[data-until] {
+          visibility: hidden !important;
+        }
+        .controls,
+        .hint {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stage" id="stage">
+      <!-- ==================== title page (uncounted) ==================== -->
+      <section class="slide titlecard" data-num="">
+        <div class="tbody">
+          <svg class="ghost" viewBox="0 0 540 200" aria-hidden="true">
+            <defs>
+              <marker id="ahg" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                <path class="ah" d="M0,0 L8,4 L0,8 Z"></path>
+              </marker>
+            </defs>
+            <text x="95" y="48" text-anchor="middle">
+              <tspan class="op">Vect</tspan>
+              <tspan dy="-7" font-size="17"><tspan class="op">Spin</tspan></tspan>
+            </text>
+            <text x="445" y="48" text-anchor="middle">
+              <tspan class="op">Pic</tspan>
+              (
+              <tspan class="op">sAlg</tspan>
+              <tspan dy="5" font-size="17">2</tspan>
+              <tspan dy="-5">)</tspan>
+            </text>
+            <text x="95" y="167" text-anchor="middle">
+              <tspan class="op">Vect</tspan>
+              <tspan dy="-7" font-size="17"><tspan class="op">SO</tspan></tspan>
+            </text>
+            <text x="270" y="167" text-anchor="middle">
+              <tspan class="op">Vect</tspan>
+              <tspan dy="-7" font-size="17" class="it">O</tspan>
+            </text>
+            <text x="445" y="167" text-anchor="middle"><tspan class="op">sLine</tspan></text>
+            <line class="edge" x1="95" y1="60" x2="95" y2="146" marker-end="url(#ahg)"></line>
+            <line class="edge" x1="128" y1="58" x2="240" y2="148" marker-end="url(#ahg)"></line>
+            <line class="edge dotted" x1="445" y1="60" x2="445" y2="146" marker-end="url(#ahg)"></line>
+            <text class="lab" x="457" y="107" text-anchor="start"><tspan class="op">trace</tspan></text>
+            <line class="edge" x1="128" y1="161" x2="234" y2="161" marker-end="url(#ahg)"></line>
+            <line class="edge" x1="303" y1="161" x2="412" y2="161" marker-end="url(#ahg)"></line>
+            <text class="lab" x="357" y="151" text-anchor="middle"><tspan class="op">det</tspan></text>
+            <line class="edge" x1="303" y1="150" x2="416" y2="62" marker-end="url(#ahg)"></line>
+            <text class="lab" x="344" y="92" text-anchor="middle"><tspan class="op">Cl</tspan></text>
+          </svg>
+          <h1>The higher algebra of the spin orientation</h1>
+          <hr class="titlerule" />
+          <p class="author">David Aretz</p>
+          <p class="date">July 16, 2026</p>
+          <p class="venue">ENFFT Lausanne</p>
+          <p class="inst">MPIM Bonn</p>
+          <p class="hint"><kbd>→</kbd> / <kbd>space</kbd> or click to advance &nbsp;·&nbsp; <kbd>←</kbd> to go back</p>
+          <svg class="ico" width="64" height="70" viewBox="0 0 64 70" aria-hidden="true">
+            <path
+              class="back"
+              d="M25.5,6.5 L25.5,33.7 M25.5,6.5 L54.0,22.1 M25.5,6.5 L2.0,29.5 M38.5,63.5 L48.1,54.6 M38.5,63.5 L15.9,59.2 M25.5,33.7 L48.1,54.6 M25.5,33.7 L15.9,59.2 M25.5,33.7 L54.0,22.1 M25.5,33.7 L2.0,29.5 M48.1,10.8 L54.0,22.1 M48.1,54.6 L15.9,59.2 M48.1,54.6 L62.0,40.5 M48.1,54.6 L54.0,22.1 M15.9,59.2 L2.0,29.5 M62.0,40.5 L54.0,22.1"
+            ></path>
+            <path
+              class="front"
+              d="M38.5,36.3 L38.5,63.5 M38.5,36.3 L48.1,10.8 M38.5,36.3 L15.9,15.4 M38.5,36.3 L62.0,40.5 M38.5,36.3 L10.0,47.9 M25.5,6.5 L48.1,10.8 M25.5,6.5 L15.9,15.4 M38.5,63.5 L62.0,40.5 M38.5,63.5 L10.0,47.9 M48.1,10.8 L15.9,15.4 M48.1,10.8 L62.0,40.5 M15.9,15.4 L10.0,47.9 M15.9,15.4 L2.0,29.5 M15.9,59.2 L10.0,47.9 M10.0,47.9 L2.0,29.5"
+            ></path>
+          </svg>
+        </div>
+      </section>
+
+      <!-- ==================== 1 / 4 ==================== -->
+      <!-- beamer overlays: alt<1-2> bimodule / <3-> Morita; Orientation <2->; Upshot <4-> -->
+      <section class="slide" data-num="1">
+        <div class="frametitle" style="--p: 25%">Geometric Spin Structures</div>
+        <div class="body">
+          <div class="block">
+            <div class="block-title">Stolz–Teichner</div>
+            <div class="block-body altwrap">
+              <div class="frag" data-until="2">
+                <em
+                  >spin structure on <span class="m"><i>V</i> → <i>X</i></span> = irreducible
+                  <span class="m"><span class="op">Cl</span>(<i>V</i>)</span>-<span class="m"
+                    ><span class="op">Cl</span><sub><span class="op">rk</span>(<i>V</i>)</sub></span
+                  >-bimodule bundle <span class="m"><i>Σ</i></span></em
+                >
+              </div>
+              <div class="frag" data-from="3">
+                <em
+                  >spin structure on <span class="m"><i>V</i> → <i>X</i></span> = <span class="accent">Morita equivalence</span></em
+                >
+                <div class="eq">
+                  <i>Σ</i> : <span class="op">Cl</span>(<i>V</i>) ≃ <span class="op">Cl</span>(ℝ<sup><span class="op">rk</span>(<i>V</i>)</sup>)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="block frag" data-from="2">
+            <div class="block-title alert">Orientation</div>
+            <div class="block-body">
+              <div class="eq">
+                <i>φ</i> : <span class="op">det</span>(<i>V</i>) ≅ <span class="op">det</span>(ℝ<sup><span class="op">rk</span>(<i>V</i>)</sup>)
+              </div>
+            </div>
+          </div>
+
+          <div class="block frag" data-from="4">
+            <div class="block-title">Upshot</div>
+            <div class="block-body">
+              SO-structure: trivialization of the determinant line<br />
+              Spin-structure: trivialization of the Clifford algebra super <span class="m">2</span>-line
+            </div>
+          </div>
+        </div>
+        <div class="frnum">1&thinsp;/&thinsp;4</div>
+      </section>
+
+      <!-- ==================== 2 / 4 ==================== -->
+      <section class="slide" data-num="2">
+        <div class="frametitle" style="--p: 50%">Categorical Whitehead Tower</div>
+        <div class="body" style="justify-content: center">
+          <div class="diagram">
+            <svg
+              style="--w: 21.6rem"
+              width="540"
+              height="200"
+              viewBox="0 0 540 200"
+              role="img"
+              aria-label="Diagram: Vect-Spin maps to Vect-SO and Vect-O; Vect-SO to Vect-O; Vect-O to sLine via det and to Pic(sAlg2) via Cl; Pic(sAlg2) to sLine via trace (dotted)"
+            >
+              <defs>
+                <marker id="ah1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path class="ah" d="M0,0 L8,4 L0,8 Z"></path>
+                </marker>
+              </defs>
+              <text x="95" y="48" text-anchor="middle">
+                <tspan class="op">Vect</tspan>
+                <tspan dy="-7" font-size="17"><tspan class="op">Spin</tspan></tspan>
+              </text>
+              <text x="445" y="48" text-anchor="middle">
+                <tspan class="op">Pic</tspan>
+                (
+                <tspan class="op">sAlg</tspan>
+                <tspan dy="5" font-size="17">2</tspan>
+                <tspan dy="-5">)</tspan>
+              </text>
+              <text x="95" y="167" text-anchor="middle">
+                <tspan class="op">Vect</tspan>
+                <tspan dy="-7" font-size="17"><tspan class="op">SO</tspan></tspan>
+              </text>
+              <text x="270" y="167" text-anchor="middle">
+                <tspan class="op">Vect</tspan>
+                <tspan dy="-7" font-size="17" class="it">O</tspan>
+              </text>
+              <text x="445" y="167" text-anchor="middle"><tspan class="op">sLine</tspan></text>
+
+              <line class="edge" x1="95" y1="60" x2="95" y2="146" marker-end="url(#ah1)"></line>
+              <line class="edge" x1="128" y1="58" x2="240" y2="148" marker-end="url(#ah1)"></line>
+              <line class="edge dotted" x1="445" y1="60" x2="445" y2="146" marker-end="url(#ah1)"></line>
+              <text class="lab" x="457" y="107" text-anchor="start"><tspan class="op">trace</tspan></text>
+              <line class="edge" x1="128" y1="161" x2="234" y2="161" marker-end="url(#ah1)"></line>
+              <line class="edge" x1="303" y1="161" x2="412" y2="161" marker-end="url(#ah1)"></line>
+              <text class="lab" x="357" y="151" text-anchor="middle"><tspan class="op">det</tspan></text>
+              <line class="edge" x1="303" y1="150" x2="416" y2="62" marker-end="url(#ah1)"></line>
+              <text class="lab" x="344" y="92" text-anchor="middle"><tspan class="op">Cl</tspan></text>
+            </svg>
+          </div>
+
+          <div class="diagram">
+            <svg
+              style="--w: 21.6rem"
+              width="540"
+              height="200"
+              viewBox="0 0 540 200"
+              role="img"
+              aria-label="Diagram: BSpin maps to BSO and BO; BSO to BO; BO to B Z/2 via w1 and up to truncation tau at most 2 of BO; that truncation maps down to B Z/2"
+            >
+              <defs>
+                <marker id="ah2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                  <path class="ah" d="M0,0 L8,4 L0,8 Z"></path>
+                </marker>
+              </defs>
+              <text x="95" y="48" text-anchor="middle">
+                <tspan class="it">B</tspan>
+                <tspan class="op">Spin</tspan>
+              </text>
+              <text x="445" y="48" text-anchor="middle">
+                <tspan class="it">τ</tspan>
+                <tspan dy="5" font-size="17">≤2</tspan>
+                <tspan dy="-5" class="it">BO</tspan>
+              </text>
+              <text x="95" y="167" text-anchor="middle"><tspan class="it">BSO</tspan></text>
+              <text x="270" y="167" text-anchor="middle"><tspan class="it">BO</tspan></text>
+              <text x="445" y="167" text-anchor="middle">
+                <tspan class="it">B</tspan>
+                <tspan>ℤ/2</tspan>
+              </text>
+
+              <line class="edge" x1="95" y1="60" x2="95" y2="146" marker-end="url(#ah2)"></line>
+              <line class="edge" x1="122" y1="58" x2="246" y2="148" marker-end="url(#ah2)"></line>
+              <line class="edge" x1="445" y1="60" x2="445" y2="146" marker-end="url(#ah2)"></line>
+              <line class="edge" x1="122" y1="161" x2="248" y2="161" marker-end="url(#ah2)"></line>
+              <line class="edge" x1="292" y1="161" x2="414" y2="161" marker-end="url(#ah2)"></line>
+              <text class="lab" x="353" y="151" text-anchor="middle">
+                <tspan class="it">w</tspan>
+                <tspan dy="4" font-size="14.5">1</tspan>
+              </text>
+              <line class="edge" x1="292" y1="150" x2="412" y2="62" marker-end="url(#ah2)"></line>
+            </svg>
+          </div>
+        </div>
+        <div class="frnum">2&thinsp;/&thinsp;4</div>
+      </section>
+
+      <!-- ==================== 3 / 4 ==================== -->
+      <!-- beamer overlays: itemize [<+->] (item 1 on <1->, item 2 on <2->); KO-twist <3-> -->
+      <section class="slide" data-num="3">
+        <div class="frametitle" style="--p: 75%">Twisted Cohomology</div>
+        <div class="body">
+          <p style="margin: 0">
+            <span class="m"><i>E</i></span> ring spectrum, <span class="m"><i>V</i> → <i>X</i></span> vector bundle.
+          </p>
+
+          <p style="margin: 0">
+            Twisted cohomology:
+            <span class="m"
+              ><i>E</i><sup>∗</sup>(<i>Th</i>(<i>V</i>)) = <i>E</i><sup>∗</sup><sub>cs</sub>(<i>V</i>) = <i>E</i
+              ><sup
+                >∗+<i>τ</i><sub><i>V</i></sub></sup
+              >(<i>M</i>)</span
+            >.
+          </p>
+
+          <div class="frag" data-from="2">
+            <p style="margin: 0 0 4px">Homotopically:</p>
+            <div class="eq">
+              <i>X</i> → <i>BO</i><sub><i>n</i></sub>
+              <span style="position: relative; display: inline-block; padding: 0 2px"
+                ><span style="position: absolute; left: 50%; transform: translateX(-50%); top: -1.05em; font-size: 0.68em"><i>J</i></span
+                >→</span
+              >
+              <span class="op">Sp</span> → <span class="op">Mod</span>(<i>E</i>)&thinsp;.
+            </div>
+          </div>
+
+          <ul class="items">
+            <li class="frag" data-from="3">
+              Classifies bundle of <span class="m"><i>E</i></span
+              >-modules over <span class="m"><i>X</i></span
+              >.
+            </li>
+            <li class="frag" data-from="4">
+              Twist trivial <span class="m">⟺</span> bundle of modules trivial. <span class="m"><i>V</i></span> is
+              <span class="accent"
+                ><span class="m"><i>E</i></span
+                >-oriented</span
+              >.
+            </li>
+          </ul>
+
+          <div class="block frag" data-from="5">
+            <div class="block-title alert">
+              <span class="m"><i>KO</i></span
+              >-twist
+            </div>
+            <div class="block-body">
+              Via <span class="m"><i>J</i></span
+              >, any <span class="m"><i>V</i> → <i>X</i></span> determines a bundle of <span class="m"><i>KO</i></span
+              >-modules
+              <span class="m"
+                ><i>τ</i><sub><i>V</i></sub> → <i>X</i></span
+              >.
+            </div>
+          </div>
+        </div>
+        <div class="frnum">3&thinsp;/&thinsp;4</div>
+      </section>
+
+      <!-- ==================== 4 / 4 ==================== -->
+      <!-- beamer overlays: K^gr arrow visible on <2->; Punchline <3->; Corollary <4-> -->
+      <section class="slide" data-num="4" style="font-size: 0.96rem">
+        <div class="frametitle" style="--p: 100%">Synthesis</div>
+        <div class="body">
+          <div class="block thmrow">
+            <div class="thmlabel">Theorem (DA)</div>
+            <div class="thmbody">
+              <div class="diagram">
+                <svg
+                  style="--w: 22.4rem"
+                  width="560"
+                  height="185"
+                  viewBox="0 0 560 185"
+                  role="img"
+                  aria-label="Diagram: disjoint union of BO n maps to Pic(KO) via J, down to Pic(sAlg2) via Cl, and Pic(sAlg2) maps to Pic(KO) via the graded K-theory functor, drawn in red"
+                >
+                  <defs>
+                    <marker id="ah3" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                      <path class="ah" d="M0,0 L8,4 L0,8 Z"></path>
+                    </marker>
+                    <marker id="ahr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                      <path class="ah-red" d="M0,0 L8,4 L0,8 Z"></path>
+                    </marker>
+                  </defs>
+                  <text x="110" y="52" text-anchor="middle">
+                    <tspan>⊔</tspan>
+                    <tspan dx="4" class="it">BO</tspan>
+                    <tspan dy="5" font-size="17" class="it">n</tspan>
+                  </text>
+                  <text x="460" y="52" text-anchor="middle">
+                    <tspan class="op">Pic</tspan>
+                    (
+                    <tspan class="it">KO</tspan>
+                    )
+                  </text>
+                  <text x="285" y="165" text-anchor="middle">
+                    <tspan class="op">Pic</tspan>
+                    (
+                    <tspan class="op">sAlg</tspan>
+                    <tspan dy="5" font-size="17">2</tspan>
+                    <tspan dy="-5">)</tspan>
+                  </text>
+
+                  <line class="edge" x1="163" y1="46" x2="404" y2="46" marker-end="url(#ah3)"></line>
+                  <text class="lab" x="283" y="35" text-anchor="middle"><tspan class="it">J</tspan></text>
+                  <line class="edge" x1="135" y1="63" x2="242" y2="145" marker-end="url(#ah3)"></line>
+                  <text class="lab" x="164" y="116" text-anchor="middle"><tspan class="op">Cl</tspan></text>
+                  <g class="frag" data-from="2">
+                    <text x="285" y="98" text-anchor="middle" style="font-size: 26px; fill: var(--dg)">&#x27F3;</text>
+                    <line class="edge red" x1="330" y1="145" x2="436" y2="64" marker-end="url(#ahr)"></line>
+                    <text class="lab-red" x="405" y="119" text-anchor="middle">
+                      <tspan class="it">K</tspan>
+                      <tspan dy="-6" font-size="15" class="it">gr</tspan>
+                    </text>
+                  </g>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="block frag" data-from="3">
+            <div class="block-title alert">Punchline</div>
+            <div class="block-body">
+              <span class="m"><i>KO</i></span
+              >-twist
+              <span class="m"
+                ><i>τ</i><sub><i>V</i></sub></span
+              >
+              trivial (<span class="m"><i>KO</i></span
+              >-oriented) <span class="m">⟺</span> super <span class="m">2</span> line bundle
+              <span class="m"><span class="op">Cl</span>(<i>V</i>)</span> trivial (<span class="m"><span class="op">Spin</span></span
+              >)
+            </div>
+          </div>
+
+          <div class="block frag" data-from="4">
+            <div class="block-title">Corollary</div>
+            <div class="block-body">
+              <span class="m"><i>M</i><span class="op">Spin</span> → <i>KO</i></span> map of ring spectra
+            </div>
+          </div>
+        </div>
+        <div class="frnum">4&thinsp;/&thinsp;4</div>
+      </section>
+
+      <!-- ==================== standout (uncounted) ==================== -->
+      <section class="slide standout" data-num="">
+        <div class="sbody">
+          <p>Thank you!</p>
+          <svg class="ico" width="56" height="61" viewBox="0 0 64 70" aria-hidden="true">
+            <path
+              class="back"
+              d="M25.5,6.5 L25.5,33.7 M25.5,6.5 L54.0,22.1 M25.5,6.5 L2.0,29.5 M38.5,63.5 L48.1,54.6 M38.5,63.5 L15.9,59.2 M25.5,33.7 L48.1,54.6 M25.5,33.7 L15.9,59.2 M25.5,33.7 L54.0,22.1 M25.5,33.7 L2.0,29.5 M48.1,10.8 L54.0,22.1 M48.1,54.6 L15.9,59.2 M48.1,54.6 L62.0,40.5 M48.1,54.6 L54.0,22.1 M15.9,59.2 L2.0,29.5 M62.0,40.5 L54.0,22.1"
+            ></path>
+            <path
+              class="front"
+              d="M38.5,36.3 L38.5,63.5 M38.5,36.3 L48.1,10.8 M38.5,36.3 L15.9,15.4 M38.5,36.3 L62.0,40.5 M38.5,36.3 L10.0,47.9 M25.5,6.5 L48.1,10.8 M25.5,6.5 L15.9,15.4 M38.5,63.5 L62.0,40.5 M38.5,63.5 L10.0,47.9 M48.1,10.8 L15.9,15.4 M48.1,10.8 L62.0,40.5 M15.9,15.4 L10.0,47.9 M15.9,15.4 L2.0,29.5 M15.9,59.2 L10.0,47.9 M10.0,47.9 L2.0,29.5"
+            ></path>
+          </svg>
+        </div>
+      </section>
+    </main>
+
+    <div class="controls">
+      <button id="prev" type="button" aria-label="Previous step">‹</button>
+      <span id="counter"></span>
+      <button id="next" type="button" aria-label="Next step">›</button>
+    </div>
+
+    <script>
+      (function () {
+        var slides = Array.prototype.slice.call(document.querySelectorAll(".slide"));
+        var s = 0,
+          k = 1;
+
+        function maxStep(sec) {
+          var m = 1;
+          sec.querySelectorAll("[data-from]").forEach(function (el) {
+            m = Math.max(m, parseInt(el.dataset.from, 10));
+          });
+          return m;
+        }
+
+        function render() {
+          slides.forEach(function (sec, i) {
+            sec.classList.toggle("current", i === s);
+          });
+          var sec = slides[s];
+          sec.querySelectorAll(".frag").forEach(function (el) {
+            var from = el.dataset.from ? parseInt(el.dataset.from, 10) : 1;
+            var until = el.dataset.until ? parseInt(el.dataset.until, 10) : Infinity;
+            el.classList.toggle("on", k >= from && k <= until);
+          });
+          var num = sec.dataset.num;
+          document.getElementById("counter").textContent = num ? num + " / 4" : "·";
+          sec.scrollTop = 0;
+        }
+
+        function next() {
+          if (k < maxStep(slides[s])) {
+            k++;
+          } else if (s < slides.length - 1) {
+            s++;
+            k = 1;
+          }
+          render();
+        }
+        function prev() {
+          if (k > 1) {
+            k--;
+          } else if (s > 0) {
+            s--;
+            k = maxStep(slides[s]);
+          }
+          render();
+        }
+
+        document.getElementById("next").addEventListener("click", function (e) {
+          e.stopPropagation();
+          next();
+        });
+        document.getElementById("prev").addEventListener("click", function (e) {
+          e.stopPropagation();
+          prev();
+        });
+        document.getElementById("stage").addEventListener("click", next);
+
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight" || e.key === " " || e.key === "PageDown") {
+            e.preventDefault();
+            next();
+          } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+            e.preventDefault();
+            prev();
+          } else if (e.key === "Home") {
+            s = 0;
+            k = 1;
+            render();
+          } else if (e.key === "End") {
+            s = slides.length - 1;
+            k = maxStep(slides[s]);
+            render();
+          }
+        });
+
+        render();
+      })();
+    </script>
+  </body>
+</html>

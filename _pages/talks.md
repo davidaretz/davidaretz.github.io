@@ -9,6 +9,8 @@ nav_order: 3
 
 ### Research Talks & Conference Presentations
 
+- **07/2026** - _The higher algebra of the spin orientation_
+  Elliptic objects, von Neumann algebras and functorial field theory, Lausanne. [[HTML slides](/notes/ABS-presentation.html)]
 - **05/2026** - _K-theory for Super Algebras_
   Higher Differential Geometry, Greifswald. [[HTML slides](/notes/super-k-theory-presentation.html)]
 - **10/2025** - _Functoriality of Lie groupoid convolution algebras_
@@ -17,6 +19,8 @@ nav_order: 3
   [Workshop on singular foliations and higher structures](https://www.mathematik.uni-wuerzburg.de/en/news/newdata/single/news/workshop-singular-foliations-and-higher-structures-in-wuerzburg-1/), Würzburg
 - **06/2025** - _The algebra of smooth functions on a differentiable stack_
   [Higher structures Seminar](https://pad.gwdg.de/s/qHgFq5LcZ), Göttingen
+- **03/2025** - _Categorical perspectives on Clifford algebras and geometric spin structures_
+  [BCGW PhD retreat](https://people.mpim-bonn.mpg.de/miyamoto/bgw-retreat/2025/agenda/)
 - **05/2024** - Gong Talk: _Homotopical vector bundles on differentiable stacks_
   From Analysis to Homotopy Theory, Greifswald. [Slides available here](https://math-inf.uni-greifswald.de/institut/ueber-uns/mitarbeitende/waldorf/from-analysis-to-homotopy-theory/titles-and-abstracts/)
 - **01/2024** - _Equivariant vector bundles in supergeometry_
@@ -32,8 +36,6 @@ nav_order: 3
   BIGS Poster session 2025. [[PDF](/assets/pdf/Poster_BIGS_2025_Aretz.pdf)]
 - **06/2024** - _Representations up to homotopy via Kan extension to differentiable stacks_
   MPIM Poster exhibition. [[PDF](/assets/pdf/Poster_MPI_2024_Aretz.pdf)]
-- **03/2025** - _Categorical perspectives on Clifford algebras and geometric spin structures_
-  [BCGW PhD retreat](https://people.mpim-bonn.mpg.de/miyamoto/bgw-retreat/2025/agenda/)
 - **06/2024** - BIGS Poster session 2024
 - **06/2023** - _Twisted cohomology via twisted 0|1-dimensional field theories_
   BIGS Poster session 2023. [[PDF](/assets/pdf/Poster_BIGS_2023_Aretz.pdf)]
@@ -44,6 +46,8 @@ nav_order: 3
 
 ### Seminar & Expository Talks
 
+- **06/2026** - _Morse functions and h-principles_
+  Cobordism Hypothesis Seminar, MPIM Bonn. _(Notes available in the Notes section)_
 - **01/2026** - _Introduction to infinity-categories_
   IMPRS Seminar, MPIM Bonn
 - **12/2025** - [HCM Graduate Colloquium](https://www.math.uni-bonn.de/ag/basicnotions/)
