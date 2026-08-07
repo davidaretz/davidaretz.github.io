@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-06-17'
+  last_updated: '2026-08-07'
 papers:
   4SGXYD0AAAAJ:2osOgNQ5qMEC:
     citations: 0
@@ -7,7 +7,7 @@ papers:
     year: Unknown Year
   4SGXYD0AAAAJ:9yKSN-GCB0IC:
     citations: 1
-    title: Cohomological Extension of Groupoid Convolution
+    title: Cohomological extension of groupoid convolution
     year: '2023'
   4SGXYD0AAAAJ:UeHWp8X0CEIC:
     citations: 0
@@ -16,7 +16,7 @@ papers:
   4SGXYD0AAAAJ:d1gkVwhDpl0C:
     citations: 1
     title: Functoriality of bornological groupoid convolution
-    year: '2025'
+    year: '2026'
   4SGXYD0AAAAJ:qjMakFHDy7sC:
     citations: 0
     title: The noncommutative geometry of symplectic singularities
