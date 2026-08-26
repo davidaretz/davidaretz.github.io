@@ -8,7 +8,8 @@ nav_order: 3
 ---
 
 ### Research Talks & Conference Presentations
-
+- **07/2026** - _Super K-theory_
+  IMPRS Seminar, MPIM Bonn
 - **07/2026** - _The higher algebra of the spin orientation_
   Elliptic objects, von Neumann algebras and functorial field theory, Lausanne. [[HTML slides](/notes/ABS-presentation.html)]
 - **05/2026** - _K-theory for Super Algebras_
