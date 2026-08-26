@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-ai-assisted-research-in-mathematics",
+        },{id: "post-ai-assisted-research-in-mathematics-ii",
+        
+          title: "AI-assisted research in mathematics II",
+        
+        description: "How I use AI currently in my research, an update.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/aimath-ii/";
+          
+        },
+      },{id: "post-ai-assisted-research-in-mathematics",
         
           title: "AI-assisted research in mathematics",
         
