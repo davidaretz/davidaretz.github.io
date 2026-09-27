@@ -38,6 +38,11 @@ body.sticky-bottom-footer {
   img {
     width: 100%;
   }
+
+  // Bootstrap's .rounded is !important, so the larger radius needs it too.
+  img.rounded {
+    border-radius: 16px !important;
+  }
 }
 
 // Content layout uses Bootstrap's grid system with responsive columns

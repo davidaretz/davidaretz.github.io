@@ -7,7 +7,7 @@ social: true # show icons from _data/socials.yml (jekyll-socials)
 profile:
   align: right
   image: Foto1.jpg
-  image_circular: true # Set to false if you prefer a square picture
+  image_circular: false # rounded rectangle (16px corners, see _sass/_layout.scss)
 ---
 
 I am a PhD student at the [Max Planck Institute for Mathematics](https://www.mpim-bonn.mpg.de/) in Bonn.
