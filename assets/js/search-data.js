@@ -11,14 +11,14 @@ ninja.data = [{
     },
   },{id: "nav-publications",
           title: "Publications",
-          description: "Publications by category in reverse chronological order (via jekyll-scholar).",
+          description: "Papers, preprints and theses.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/publications/";
           },
         },{id: "nav-talks",
           title: "Talks",
-          description: "A selection of my research talks, conference presentations, and expository seminar talks.",
+          description: "Research talks, posters and expository talks.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/talks/";
@@ -71,7 +71,7 @@ ninja.data = [{
         title: 'CV',
         section: 'Socials',
         handler: () => {
-          window.open("/assets/rendercv/rendercv_output/David_Aretz_CV.pdf", "_blank");
+          window.open("/assets/pdf/David_Aretz_CV.pdf", "_blank");
         },
       },{
         id: 'social-email',
