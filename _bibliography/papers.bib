@@ -1,9 +1,17 @@
+@comment{
+Sections on the publications page are chosen by entry type:
+article = Papers and preprints, unpublished = In preparation (title and authors only: no dates, no links),
+mastersthesis = Theses.
+The page template shows no volume/number/pages, so additional_info carries them.
+}
+
 @article{aretz2026superktheory,
   title={Super {$K$}-theory and group completion},
   author={Aretz, David and Stehouwer, Luuk},
   journal={arXiv:2609.02407},
   year={2026},
   arxiv={2609.02407},
+  additional_info={, submitted},
   selected={true}
 }
 
@@ -11,10 +19,30 @@
   title={Functoriality of bornological groupoid convolution},
   author={Aretz, David and Blohmann, Christian},
   journal={Journal of Functional Analysis},
+  volume={291},
+  number={12},
+  pages={111618},
   year={2026},
   arxiv={2508.11005},
   doi={10.1016/j.jfa.2026.111618},
+  additional_info={, vol. 291, no. 12, article 111618},
   selected={true}
+}
+
+@unpublished{aretz2026morita,
+  title={Morita equivalence and the spin orientation},
+  author={Aretz, David}
+}
+
+@unpublished{aretzdembickas2026twisted,
+  title={Twisted supersymmetric field theories in dimension zero},
+  author={Aretz, David and Dembickas, Karolis}
+}
+
+@unpublished{aretzberwickevans2026elliptic,
+  title={Elliptic objects and supersymmetric field theories},
+  author={Aretz, David and Berwick-Evans, Daniel},
+  additional_info={Lecture notes}
 }
 
 @mastersthesis{aretz2023master,
@@ -23,7 +51,7 @@
   year={2023},
   school={University of Bonn},
   pdf={Master_Thesis.pdf},
-  note={Supervised by Christian Blohmann. I use the convenient setting of bornological vector spaces to prove Morita invariance of the smooth convolution algebra.}
+  note={Master's thesis, supervised by Christian Blohmann. I use the convenient setting of bornological vector spaces to prove Morita invariance of the smooth convolution algebra.}
 }
 
 @mastersthesis{aretz2020bachelor,
@@ -31,7 +59,6 @@
   author={Aretz, David},
   year={2020},
   school={University of Bonn},
-  type={Bachelor's thesis},
   pdf={Bachelor_Thesis.pdf},
-  note={Supervised by Christian Blohmann.}
+  note={Bachelor's thesis, supervised by Christian Blohmann.}
 }

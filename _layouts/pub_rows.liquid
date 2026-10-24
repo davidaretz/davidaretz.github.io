@@ -1,0 +1,42 @@
+{%- comment -%}
+  Publication row (used by _pages/publications.md via --template pub_rows); styled like the talks table.
+  Left label: "in prep." for @unpublished, "preprint" for articles without a DOI, otherwise the year.
+  Other entries show additional_info (e.g. "Lecture notes") after the authors.
+{%- endcomment -%}
+{%- assign extra = entry.additional_info | markdownify | remove: '<p>' | remove: '</p>' | strip -%}
+<div class="pub-row">
+  <div class="pub-row-left">
+    {%- if entry.type == 'unpublished' -%}
+      in prep.
+    {%- elsif entry.type == 'article' and entry.doi == null -%}
+      preprint
+    {%- else -%}
+      {{ entry.year }}
+    {%- endif -%}
+  </div>
+  <div class="pub-row-main">
+    <div class="pub-row-title">{{ entry.title }}</div>
+    <div class="pub-row-meta">
+      {%- include pub/authors.liquid -%}
+      {%- if entry.type == 'article' %}
+        · <em>{{ entry.journal }}</em>{{ extra -}}
+        {%- if entry.doi == null %} ({{ entry.year }}){% endif %}
+      {%- elsif entry.type == 'mastersthesis' %}
+        · {{ entry.note | split: ',' | first }}, {{ entry.school }}
+      {%- elsif extra != '' %}
+        · {{ extra }}
+      {%- endif -%}
+    </div>
+  </div>
+  <div class="pub-row-links">
+    {%- if entry.arxiv -%}
+      <a class="talk-btn" href="https://arxiv.org/abs/{{ entry.arxiv }}">arXiv</a>
+    {%- endif -%}
+    {%- if entry.doi -%}
+      <a class="talk-btn" href="https://doi.org/{{ entry.doi }}">DOI</a>
+    {%- endif -%}
+    {%- if entry.pdf -%}
+      <a class="talk-btn" href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}">PDF</a>
+    {%- endif -%}
+  </div>
+</div>

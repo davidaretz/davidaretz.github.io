@@ -1,0 +1,19 @@
+{%- comment -%}
+  Author list for _layouts/pub_rows.liquid. Coauthors listed in _data/coauthors.yml link to their homepage.
+{%- endcomment -%}
+{%- for a in entry.author_array -%}
+  {%- assign nm = a.first | append: ' ' | append: a.last -%}
+  {%- assign co_url = null -%}
+  {%- assign co_key = a.last | downcase -%}
+  {%- for co in site.data.coauthors[co_key] -%}
+    {%- if co.firstname contains a.first %}{% assign co_url = co.url %}{% endif -%}
+  {%- endfor -%}
+  {%- if co_url -%}
+    <a href="{{ co_url }}">{{ nm }}</a>
+  {%- else -%}
+    {{ nm }}
+  {%- endif -%}
+  {%- unless forloop.last -%}
+    {%- if forloop.rindex == 2 %} and {% else %}, {% endif -%}
+  {%- endunless -%}
+{%- endfor -%}

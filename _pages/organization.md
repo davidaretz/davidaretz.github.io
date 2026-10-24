@@ -7,17 +7,18 @@ nav: true
 nav_order: 6
 ---
 
-### Seminar Organisation
+### Current
 
-- **[Quantum Topology Seminar](https://www.mpim-bonn.mpg.de/node/15202)**
-  Organised together with Aaron Hofer, Naageswaran Manikandan, Léo Schelstraete, Filippos Sytillidis
+- **[Quantum Topology Seminar](https://www.mpim-bonn.mpg.de/node/15202)** (2026–present).
+  Together with Aaron Hofer, Naageswaran Manikandan, Léo Schelstraete and Filippos Sytilidis.
+- **Bonn Math & AI PhD events** (2026–present).
+  Together with Fabio Neugebauer and Emma Pechouckova. Reach out if you are interested!
 
-- **[Physical Mathematics Seminar](https://davidprinz.org/seminar/)**
-  Organised together with David Prinz and Peter Teichner.
+### Past
 
-### Conference & Retreat Organisation
-
-- **[BCGW PhD Retreat](https://people.mpim-bonn.mpg.de/miyamoto/bgw-retreat/2025)**
-  _Bonn-Cologne-Göttingen-Würzburg_ PhD retreat, Burbach, March 2025.
-- **[BGW PhD retreat](https://people.mpim-bonn.mpg.de/miyamoto/bgw-retreat/2024/)**
-  _Bonn-Göttingen-Würzburg_ PhD retreat, Bielefeld, October 2024
+- **[Physical Mathematics Seminar](https://davidprinz.org/seminar/)** (2024–2025).
+  Together with David Prinz.
+- **[BCGUW PhD Retreat](https://people.mpim-bonn.mpg.de/miyamoto/bgw-retreat/2025)**: Higher Structures in Differential Geometry.
+  _Bonn–Cologne–Göttingen–Utrecht–Würzburg_, Burbach, March 2025.
+- **[BGW PhD Retreat](https://people.mpim-bonn.mpg.de/miyamoto/bgw-retreat/2024/)**: Higher Structures in Differential Geometry.
+  _Bonn–Göttingen–Würzburg_, Bielefeld, October 2024.

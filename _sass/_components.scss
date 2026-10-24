@@ -259,3 +259,143 @@ ul.task-list input[type="checkbox"] {
 .d2h-diff-table {
   position: relative;
 }
+
+// Talks page (_pages/talks.md, _includes/talks_table.liquid)
+
+.talk-jump {
+  margin-bottom: 1rem;
+
+  a {
+    margin-right: 1rem;
+  }
+}
+
+.talk-section {
+  margin-top: 2rem;
+}
+
+.talk-table {
+  color: var(--global-text-color);
+
+  td {
+    border-top: 1px solid var(--global-divider-color);
+    vertical-align: top;
+    padding: 0.55rem 0.5rem;
+  }
+}
+
+.talk-table-date {
+  white-space: nowrap;
+  width: 6.5rem;
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+}
+
+.talk-table-title {
+  font-weight: 500;
+}
+
+.talk-table-links {
+  white-space: nowrap;
+  text-align: right;
+  width: 1%;
+}
+
+.talk-prefix {
+  color: var(--global-text-color-light);
+  font-weight: 400;
+}
+
+.talk-venue {
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+}
+
+.talk-btn {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0 0.6rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  border-radius: 1rem;
+  border: 1px solid var(--global-theme-color);
+  color: var(--global-theme-color) !important;
+
+  &:hover {
+    background: var(--global-theme-color);
+    color: var(--global-bg-color) !important;
+    text-decoration: none;
+  }
+}
+
+.talk-badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0 0.5rem;
+  vertical-align: middle;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  border-radius: 1rem;
+  font-weight: 500;
+  background: var(--global-theme-color);
+  color: var(--global-bg-color);
+}
+
+// Publications page rows (_layouts/pub_rows.liquid); pill buttons reuse .talk-btn
+
+.pub-rows {
+  ol.bibliography {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    > li {
+      border-top: 1px solid var(--global-divider-color);
+    }
+  }
+
+  .pub-section {
+    margin: 2rem 0 0.8rem;
+    font-size: 1.35rem;
+  }
+}
+
+.pub-row {
+  display: flex;
+  gap: 1rem;
+  padding: 0.6rem 0.5rem;
+}
+
+.pub-row-left {
+  flex: 0 0 5.5rem;
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+  padding-top: 0.1rem;
+}
+
+.pub-row-main {
+  flex: 1;
+}
+
+.pub-row-title {
+  font-weight: 500;
+}
+
+.pub-row-meta {
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+}
+
+.pub-row-links {
+  white-space: nowrap;
+}
+
+@media (max-width: 576px) {
+  .pub-row {
+    flex-wrap: wrap;
+  }
+
+  .pub-row-left {
+    flex-basis: 100%;
+  }
+}

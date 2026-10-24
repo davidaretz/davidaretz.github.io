@@ -1,5 +1,7 @@
 # yaml-language-server: $schema=https://github.com/rendercv/rendercv/blob/main/schema.json?raw=true
-# RenderCV format (https://rendercv.com/) — used by the CV page and .github/workflows/render-cv.yml
+# RenderCV format (https://rendercv.com/) — rendered on the CV page.
+# Source of truth is ~/Desktop/Applications/cv.tex; keep the two in sync.
+# Kept short on purpose; the full CV is the downloadable PDF assets/pdf/David_Aretz_CV.pdf (cv.tex without references).
 cv:
   name: David Aretz
   headline: PhD student in Mathematics
@@ -8,52 +10,59 @@ cv:
   website: https://davidaretz.github.io
 
   sections:
+    Research interests:
+      - label: Areas
+        details: Higher differential geometry; supersymmetric functorial field theories; homotopy theory and K-theory; noncommutative geometry.
+
     Education:
-      - institution: Max Planck Institute for Mathematics (MPIM), Bonn
+      - institution: University of Bonn and Max Planck Institute for Mathematics, Bonn
         area: Mathematics
         degree: PhD
         start_date: 2023-04
-        end_date: present
+        end_date: 2027
         highlights:
-          - PhD student with Christian Blohmann and Peter Teichner.
+          - "Supervisors: Christian Blohmann and Peter Teichner."
+          - "Provisional thesis title: *Classifying spaces of supersymmetric field theories*"
       - institution: University of Bonn
         area: Mathematics
         degree: MSc
         start_date: 2020-10
         end_date: 2023-01
         highlights:
-          - "Master's thesis: Cohomological extension of groupoid convolution"
-          - with distinction
-          - Scholarship of Studienstiftung des deutschen Volkes.
+          - "Final grade 1.0, with distinction. Supervisor: Christian Blohmann."
+          - "Thesis: [*Cohomological Extension of Groupoid Convolution*](https://davidaretz.github.io/assets/pdf/Master_Thesis.pdf)"
       - institution: University of Bonn
         area: Mathematics
         degree: BSc
         start_date: 2017-10
         end_date: 2020-08
         highlights:
-          - "Bachelor's thesis: The noncommutative geometry of symplectic singularities"
-          - Prize for best graduating student.
-          - Scholarship of Studienstiftung des deutschen Volkes.
+          - "Final grade 1.0, with distinction. Secondary subject: Astrophysics. Supervisor: Christian Blohmann."
+          - "Thesis: [*The Noncommutative Geometry of Symplectic Singularities*](https://davidaretz.github.io/assets/pdf/Bachelor_Thesis.pdf)"
 
     Experience:
       - company: University of Bonn
-        position: Teaching Assistant / Tutor
+        position: Tutor, Higher Category Theory (lecturer Merlin Christ)
+        start_date: 2026-10
+        end_date: present
+      - company: University of Bonn, Mathematical Institute
+        position: Workshops for new tutors
+        start_date: 2022
+        end_date: 2026
+        summary: Leading one of the one-day workshops for new tutors (2022, 2024, 2025, 2026), with Regula Krapf.
+      - company: University of Bonn, Mathematical Institute
+        position: Tutor
         start_date: 2018-09
         end_date: 2023-03
         highlights:
-          - Preliminary Course
-          - Analysis I-III
-          - Analysis III repetition
-          - Complex Analysis
-          - Global Analysis
-          - Introduction to Manifolds
-          - Riemannian Geometry
-      - company: University of Bonn
-        position: Instructor, Teaching Assistant Training
-        summary: Instructor for a training day for teaching assistants.
-        date: Oct 2022, Oct 2024, Oct 2025
-    Other:
-      - bullet: "**Paternity leave** (06/2024 - 07/2024): On paternity leave."
+          - Geometry and Analysis on Manifolds (winter 2021/22, 2022/23)
+          - Riemannian Geometry (summer 2022)
+          - Analysis I (winter 2020/21), Analysis II (summer 2021), Analysis III and revision course (winter 2019/20)
+          - Complex Analysis (summer 2020)
+          - Mathematics precourses (2018, 2019)
+
+    Parental leave:
+      - bullet: "June–July 2024"
 
     Languages:
       - name: Languages

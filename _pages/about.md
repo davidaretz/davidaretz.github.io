@@ -12,8 +12,8 @@ profile:
 
 I am a PhD student at the [Max Planck Institute for Mathematics](https://www.mpim-bonn.mpg.de/) in Bonn.
 My supervisors are [Christian Blohmann](https://people.mpim-bonn.mpg.de/blohmann/) and [Peter Teichner](https://people.mpim-bonn.mpg.de/teichner/Math/).
-My research interests are broadly in higher differential geometry, functorial field theory and homotopy theory.
+My research interests are in the interaction of homotopy theory and higher categories with geometry and physics, in particular supersymmetric functorial field theories.
 
-Check out the new [Quantum topology seminar](https://www.mpim-bonn.mpg.de/node/15202)!
+Currently co-organising the [Quantum Topology Seminar](https://www.mpim-bonn.mpg.de/node/15202).
 
 <p class="text-muted small mt-3 mb-0">Informal notes: <a href="/blog/">AI-assisted research in mathematics</a>.</p>

@@ -1,0 +1,45 @@
+{%- comment -%}
+  One talks section as a table. Param: items (a list from _data/talks.yml).
+  Entries dated after the build month get an "upcoming" badge.
+{%- endcomment -%}
+{%- assign now = site.time | date: '%Y-%m' -%}
+<div class="table-responsive">
+  <table class="table table-sm talk-table">
+    <tbody>
+      {%- for t in include.items -%}
+        <tr>
+          <td class="talk-table-date">{{ t.date | append: '-01' | date: '%b %Y' }}</td>
+          <td>
+            <span class="talk-table-title">
+              {%- if t.prefix -%}
+                <span class="talk-prefix">{{ t.prefix }}:</span>
+              {% endif -%}
+              {{ t.title -}}
+            </span>
+            {%- if t.date > now %}
+              <span class="talk-badge">upcoming</span>
+            {%- endif -%}
+            {%- if t.venue or t.place -%}
+              <div class="talk-venue">
+                {%- if t.venue_url -%}
+                  <a href="{{ t.venue_url }}">{{ t.venue }}</a>
+                {%- else -%}
+                  {{- t.venue -}}
+                {%- endif -%}
+                {%- if t.place -%}
+                  {%- if t.venue %}, {% endif -%}
+                  {{- t.place -}}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </td>
+          <td class="talk-table-links">
+            {%- for l in t.links -%}
+              <a class="talk-btn" href="{{ l.url | relative_url }}">{{ l.label }}</a>
+            {%- endfor -%}
+          </td>
+        </tr>
+      {%- endfor -%}
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,135 @@
+# Talks, posters and expository talks — rendered by _pages/talks.md.
+# date: YYYY-MM. Entries dated after the current month are marked "upcoming".
+# links: list of {label, url}. venue_url is optional.
+
+research:
+  - date: 2026-11
+    title: The higher algebra of the spin orientation
+    venue: Algebra/Topology Seminar
+    place: Copenhagen
+  - date: 2026-10
+    title: K-theory for super algebras
+    venue: Texas Tech Topology and Geometry Seminar
+    venue_url: https://researchseminars.org/seminar/tandg
+  - date: 2026-07
+    title: Super K-theory
+    venue: IMPRS Seminar
+    place: MPIM Bonn
+  - date: 2026-07
+    title: The higher algebra of the spin orientation
+    venue: Elliptic objects, von Neumann algebras and functorial field theory
+    place: Lausanne
+    links:
+      - { label: Slides, url: /notes/ABS-presentation.html }
+  - date: 2026-05
+    title: K-theory for super algebras
+    venue: Higher Differential Geometry
+    place: Greifswald
+    links:
+      - { label: Slides, url: /notes/super-k-theory-presentation.html }
+  - date: 2025-10
+    title: Functoriality of Lie groupoid convolution algebras
+    venue: Higher Differential Geometry Seminar
+    venue_url: https://www.mpim-bonn.mpg.de/node/3946
+    place: MPIM Bonn
+  - date: 2025-07
+    title: Functoriality of Lie groupoid convolution algebras
+    venue: Workshop on singular foliations and higher structures
+    venue_url: https://www.mathematik.uni-wuerzburg.de/en/news/newdata/single/news/workshop-singular-foliations-and-higher-structures-in-wuerzburg-1/
+    place: Würzburg
+  - date: 2025-06
+    title: The algebra of smooth functions on a differentiable stack
+    venue: Higher Structures Seminar
+    venue_url: https://pad.gwdg.de/s/qHgFq5LcZ
+    place: Göttingen
+  - date: 2025-03
+    title: Categorical perspectives on Clifford algebras and geometric spin structures
+    venue: BCGUW PhD retreat
+    venue_url: https://people.mpim-bonn.mpg.de/miyamoto/bgw-retreat/2025/agenda/
+    place: Burbach
+  - date: 2024-05
+    prefix: Gong talk
+    title: Homotopical vector bundles on differentiable stacks
+    venue: From Analysis to Homotopy Theory
+    place: Greifswald
+    links:
+      - {
+          label: Slides,
+          url: "https://math-inf.uni-greifswald.de/institut/ueber-uns/mitarbeitende/waldorf/from-analysis-to-homotopy-theory/titles-and-abstracts/",
+        }
+  - date: 2024-01
+    title: Equivariant vector bundles in supergeometry
+    venue: WIQI topology seminar
+    venue_url: https://guests.mpim-bonn.mpg.de/bianchi/wiqi.html
+    place: MPIM Bonn
+  - date: 2023-10
+    title: Odd parallel transport, twists and local systems
+    venue: BGW PhD retreat
+
+posters:
+  - date: 2025-06
+    title: Clifford algebras, spin structures and twisted K-theory
+    venue: BIGS Poster session 2025
+    links:
+      - { label: PDF, url: /assets/pdf/Poster_BIGS_2025_Aretz.pdf }
+  - date: 2024-06
+    title: Representations up to homotopy via Kan extension to differentiable stacks
+    venue: MPIM Poster exhibition
+    links:
+      - { label: PDF, url: /assets/pdf/Poster_MPI_2024_Aretz.pdf }
+  - date: 2024-06
+    title: BIGS Poster session 2024
+  - date: 2024-03
+    title: Bornological groupoid convolution algebras
+    venue: Interactions between Poisson Geometry and Quantisation
+    place: Göttingen
+  - date: 2023-06
+    title: Twisted cohomology via twisted 0|1-dimensional field theories
+    venue: BIGS Poster session 2023
+    links:
+      - { label: PDF, url: /assets/pdf/Poster_BIGS_2023_Aretz.pdf }
+
+expository:
+  - date: 2026-06
+    title: Morse functions and h-principles
+    venue: Cobordism Hypothesis Seminar
+    place: MPIM Bonn
+    links:
+      - { label: Notes, url: /notes/ }
+  - date: 2026-01
+    title: Introduction to infinity-categories
+    venue: IMPRS Seminar
+    place: MPIM Bonn
+  - date: 2025-12
+    title: HCM Graduate Colloquium
+    venue_url: https://www.math.uni-bonn.de/ag/basicnotions/
+    venue: Universität Bonn
+  - date: 2025-04
+    title: The homotopy fixed point spectral sequence
+    venue: IMPRS Seminar
+    place: MPIM Bonn
+  - date: 2025-01
+    title: The Witten genus
+    venue: IMPRS Seminar
+    place: MPIM Bonn
+  - date: 2025-01
+    title: Differential forms on stacks and the de Rham theorem
+    venue: Group Seminar on higher structures
+    links:
+      - { label: Notes, url: /notes/ }
+  - date: 2024-10
+    title: Cutting vs glueing
+    venue: BGW PhD retreat
+    venue_url: https://people.mpim-bonn.mpg.de/miyamoto/bgw-retreat/2024/agenda/
+  - date: 2024-05
+    title: Introduction to classical Chern–Simons theory
+    venue: IMPRS Seminar
+    place: MPIM Bonn
+  - date: 2024-02
+    title: Supersymmetric quantum mechanics (two talks)
+    venue: MathPhys Seminar
+    place: MPIM Bonn
+  - date: 2023-05
+    title: Z/2-graded geometry
+    venue: IMPRS Seminar
+    place: MPIM Bonn
