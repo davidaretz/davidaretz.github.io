@@ -227,6 +227,10 @@ defaults:
     values:
       sitemap: false
   - scope:
+      path: "p" # short unlisted links to manuscripts (redirect pages)
+    values:
+      sitemap: false
+  - scope:
       path: ""
       type: posts
     values:
