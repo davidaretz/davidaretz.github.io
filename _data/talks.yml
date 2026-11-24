@@ -1,12 +1,22 @@
 # Talks, posters and expository talks — rendered by _pages/talks.md.
-# date: YYYY-MM. Entries dated after the current month are marked "upcoming".
+# date: YYYY-MM or "YYYY-MM-DD" (quoted). Entries dated after the build date are marked
+# "upcoming" (a bare YYYY-MM counts as upcoming only in later months).
 # links: list of {label, url}. venue_url is optional.
 
 research:
+  - date: "2026-12-08"
+    title: Morita equivalence and the spin orientation
+    venue: Oberseminar Topologie
+    place: Göttingen
   - date: 2026-11
     title: The higher algebra of the spin orientation
     venue: Algebra/Topology Seminar
     place: Copenhagen
+  - date: "2026-11-18"
+    title: Super K-theory and group completion
+    venue: Higher Differential Geometry Seminar
+    venue_url: https://www.mpim-bonn.mpg.de/node/23480
+    place: MPIM Bonn
   - date: 2026-10
     title: K-theory for super algebras
     venue: Texas Tech Topology and Geometry Seminar

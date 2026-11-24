@@ -1,14 +1,14 @@
 {%- comment -%}
   One talks section as a table. Param: items (a list from _data/talks.yml).
-  Entries dated after the build month get an "upcoming" badge.
+  Entries dated after the build date get an "upcoming" badge.
 {%- endcomment -%}
-{%- assign now = site.time | date: '%Y-%m' -%}
+{%- assign now = site.time | date: '%Y-%m-%d' -%}
 <div class="table-responsive">
   <table class="table table-sm talk-table">
     <tbody>
       {%- for t in include.items -%}
         <tr>
-          <td class="talk-table-date">{{ t.date | append: '-01' | date: '%b %Y' }}</td>
+          <td class="talk-table-date">{{ t.date | slice: 0, 7 | append: '-01' | date: '%b %Y' }}</td>
           <td>
             <span class="talk-table-title">
               {%- if t.prefix -%}
